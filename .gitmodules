@@ -1,0 +1,3 @@
+[submodule "blog-contents"]
+	path = contents
+	url = git@github.com:yeonhwan/blog-contents.git
