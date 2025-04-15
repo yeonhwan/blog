@@ -1,8 +1,30 @@
-import { getAllPosts } from "@/actions/getPosts";
+import { getAllPosts } from "@/actions/posts";
+import Link from "next/link";
 
-export default async function Posts() {
-  const posts = await getAllPosts({ page: 1, sort: "DESC" });
-  // console.log("posts", posts);
+type PostsProps = {
+  searchParams: {
+    page?: string;
+    sort?: "ASC" | "DESC";
+  };
+};
 
-  return <div>Post Page</div>;
+export default async function Posts({ searchParams }: PostsProps) {
+  const params = await searchParams;
+  const page = params.page ?? (1 as number);
+  const sort = params.sort ?? "DESC";
+  const posts = await getAllPosts({ page: Number(page), sort });
+
+  return (
+    <div>
+      <ul className="flex flex-col gap-2">
+        {posts.map((post, idx) => {
+          return (
+            <Link href={`/posts/${post.slug}`} key={post.id}>
+              {post.title}
+            </Link>
+          );
+        })}
+      </ul>
+    </div>
+  );
 }

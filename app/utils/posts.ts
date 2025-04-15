@@ -1,6 +1,6 @@
 import type { Dirent } from "node:fs";
-import matter from "gray-matter";
 import type { PostMeta } from "@/types/posts";
+import matter from "gray-matter";
 
 const POST_PER_PAGE = 5;
 
