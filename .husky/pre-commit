@@ -1,0 +1,10 @@
+echo "🔍 커밋 대상 변경 파일 검사 중..."
+
+if git diff --cached --name-only | grep -qE '^(posts)/.*\.(md|mdx)$'; then
+  echo "🟡 contents 하위 .md 파일이 변경되었습니다."
+  echo "contents update 관련 스크립트가 실행됩니다."
+  pnpm exec node ./contents/main.js
+  git add posts/
+else
+  echo "✅ posts/ 하위 변경 없음 → 스킵"
+fi
