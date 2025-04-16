@@ -4,6 +4,7 @@ import path from "path";
 import { getContentPath } from "@/utils/getContentPath";
 import { getPostsPerPage, getPostsMeta } from "@/utils/posts";
 import matter from "gray-matter";
+import NextResponse from "next/server";
 import type { PostDTo, PostsDTO } from "@/types/posts";
 
 /**
@@ -30,6 +31,8 @@ export async function getPostBySlug({ postSlug }: PostDTo) {
   const __postsDir = getContentPath();
   const __indexPath = path.join(__postsDir, "slug.json");
   const index = JSON.parse(fs.readFileSync(__indexPath).toString());
+  const postFilename = index[postSlug];
+  if (postFilename === undefined) return null;
   const __postPath = path.join(__postsDir, index[postSlug]);
   const post = matter.read(__postPath);
   return post;
