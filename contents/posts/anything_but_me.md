@@ -3,6 +3,7 @@ title: anything but me
 date: 2024-04-19T00:00:00.000Z
 tags: []
 slug: anything-but-me
+excerpt: anything but me
 ---
 
 # First Heading
