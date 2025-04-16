@@ -5,12 +5,52 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  /* fonts */
+@theme {
+  /* Fonts */
   --font-fira: var(--font-fira);
   --font-nbg: var(--font-nbg);
 
-  /* palette */
+  /* Palette */
+  --color-neon-green-100: #47c78f;
+  --color-neon-green-200: #33966b;
+  --color-neon-green-300: #2b7253;
+  --color-neon-green-400: #25533f;
+  --color-neon-cyan-100: #4edbc6;
+  --color-neon-cyan-200: #55aa9d;
+  --color-neon-cyan-300: #46837a;
+  --color-neon-cyan-400: #3a655e;
+  --color-neon-yellow: #e3de4b;
+  --color-neon-blue: #364bd4;
+  --color-neon-lime: #b6e34b;
+  --color-dark-ash: #222222;
+  --color-dark-black: #141414;
+  --color-dark-green: #2a3131;
+  --color-text-white: #f9fcfb;
+  --color-text-gray: #c1c4c3;
+  --color-sub-gray: #7b7b7b;
+
+  /* Spacing */
+  --spacing-mb-x-gutter: 0.875rem; /* 14px */
+  --spacing-mb-y-gutter: 1.25rem; /* 20px */
+  --spacing-mb-header-height: 30px;
+  --spacing-base-line-height: 1.5;
+  --spacing-content-gutter: 2.813rem; /* 45px */
+
+  /* Typogrpahy (1rem === 16px;) */
+  --text-mb-base: 1rem;
+  --text-mb-h1: 1.25rem; /* 20px */
+  --text-mb-h2: 1.125rem; /* 18px */
+  --text-mb-sub: 0.75rem; /* 12px */
+  --text-mb-nav-link: 1.5625rem; /* 25px */
+
+  /* Breakpoint (min-width) */
+  --breakpoint-desktop: 1920px;
+  --breakpoint-laptop: 1024px;
+  --breakpoint-tablet: 680px;
+
+  /* effects */
+  --blur-navbar: 20px;
+  --drop-shadow-item: 0px 5px 4px rgba(0, 0, 0, 0.25);
 }
 
 /* theme modes are for later
