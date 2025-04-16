@@ -1,6 +1,5 @@
 export type PostsDTO = {
   page: number;
-  sort: "ASC" | "DESC";
 };
 
 export type PostDTo = {
@@ -9,7 +8,13 @@ export type PostDTo = {
 
 export type PostMeta = {
   title: string;
+  excerpt: string;
   date: Date;
   slug: string;
-  id: string;
+  tags: string[];
+};
+
+export type PostData = {
+  content: string;
+  data: PostMeta;
 };
