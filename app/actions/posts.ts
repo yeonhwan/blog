@@ -2,21 +2,28 @@
 import fs from "fs";
 import path from "path";
 import { getContentPath } from "@/utils/getContentPath";
-import { getPostsPerPage, isPostFile, parsePostContent } from "@/utils/posts";
+import {
+  sliceDirentsPerPage,
+  isPostFile,
+  parsePostContent,
+  sortPostsByDate,
+} from "@/utils/posts";
 import type { PostData, PostDTo, PostsDTO } from "@/types/posts";
 
-export async function getAllPosts({ page = 1 }: PostsDTO): Promise<PostData[]> {
+export async function getAllPosts({
+  page = 1,
+}: PostsDTO): Promise<{ data: PostData[]; total: number }> {
   const __postsDir = getContentPath();
   const allDirents = fs.readdirSync(__postsDir, {
     recursive: true,
     withFileTypes: true,
   });
   const files = allDirents.filter((dirent) => isPostFile(dirent));
-  const posts = getPostsPerPage(page, files);
-  const metas = posts.map((dirent) =>
+  const { total, data: postsDirent } = sliceDirentsPerPage(page, files);
+  const posts = postsDirent.map((dirent) =>
     parsePostContent(dirent, { excerpt: true }),
   );
-  return metas;
+  return { total, data: sortPostsByDate(posts) };
 }
 
 export async function getPostBySlug({ postSlug }: PostDTo) {

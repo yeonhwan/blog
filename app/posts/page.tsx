@@ -1,5 +1,7 @@
 import { getAllPosts } from "@/actions/posts";
-import Link from "next/link";
+import PageTitle from "@/components/ui/PageTitle";
+import PostItem from "@/components/ui/posts/PostItem";
+import Pagination from "@/components/ui/posts/Pagination";
 
 type PostsProps = {
   searchParams: {
@@ -10,21 +12,20 @@ type PostsProps = {
 
 export default async function Posts({ searchParams }: PostsProps) {
   const params = await searchParams;
-  const page = params.page ?? (1 as number);
-  const sort = params.sort ?? "DESC";
-  const posts = await getAllPosts({ page: Number(page), sort });
+  const page = params.page ? Number(params.page) : (1 as number);
+  const { total, data: posts } = await getAllPosts({ page });
 
   return (
     <div>
-      <ul className="flex flex-col gap-2">
-        {posts.map((post, idx) => {
-          return (
-            <Link href={`/posts/${post.slug}`} key={post.id}>
-              {post.title}
-            </Link>
-          );
-        })}
+      <PageTitle title="Posts" />
+      <ul className="flex flex-col gap-6">
+        {posts.map(({ data }, idx) => (
+          <PostItem key={data.slug} {...data} />
+        ))}
       </ul>
+      <div className="w-full flex justify-center my-10">
+        <Pagination total={total} current={page} />
+      </div>
     </div>
   );
 }

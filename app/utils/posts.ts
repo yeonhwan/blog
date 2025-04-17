@@ -12,10 +12,22 @@ export const isPostFile = (dirent: Dirent) => {
   );
 };
 
-export const getPostsPerPage = (page: number, posts: Dirent[]) => {
+export const sliceDirentsPerPage = (
+  page: number,
+  posts: Dirent[],
+): { data: Dirent[]; total: number } => {
   const start = (page - 1) * POST_PER_PAGE;
   const end = start + POST_PER_PAGE;
-  return posts.slice(start, end);
+  return {
+    total: Math.ceil(posts.length / POST_PER_PAGE),
+    data: posts.slice(start, end),
+  };
+};
+
+export const sortPostsByDate = (posts: PostData[]): PostData[] => {
+  return posts.toSorted((a, b) => {
+    return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+  });
 };
 
 type ParsingOption = Parameters<typeof matter.read>["1"] | undefined;

@@ -9,7 +9,7 @@ export type PostDTo = {
 export type PostMeta = {
   title: string;
   excerpt: string;
-  date: Date;
+  date: string;
   slug: string;
   tags: string[];
 };
