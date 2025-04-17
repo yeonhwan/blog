@@ -12,16 +12,20 @@ export const isPostFile = (dirent: Dirent) => {
   );
 };
 
-export const sliceDirentsPerPage = (
+export const sliceDataPerPage = <T>(
   page: number,
-  posts: Dirent[],
-): { data: Dirent[]; total: number } => {
+  data: T[],
+): { data: T[]; total: number } => {
   const start = (page - 1) * POST_PER_PAGE;
   const end = start + POST_PER_PAGE;
   return {
-    total: Math.ceil(posts.length / POST_PER_PAGE),
-    data: posts.slice(start, end),
+    total: Math.ceil(data.length / POST_PER_PAGE),
+    data: data.slice(start, end),
   };
+};
+
+export const filterPostsByTag = (posts: PostData[], tag: string) => {
+  return posts.filter((post) => post.data.tags.includes(tag));
 };
 
 export const sortPostsByDate = (posts: PostData[]): PostData[] => {

@@ -3,27 +3,48 @@ import fs from "fs";
 import path from "path";
 import { getContentPath } from "@/utils/getContentPath";
 import {
-  sliceDirentsPerPage,
+  sliceDataPerPage,
   isPostFile,
   parsePostContent,
   sortPostsByDate,
+  filterPostsByTag,
 } from "@/utils/posts";
 import type { PostData, PostDTo, PostsDTO } from "@/types/posts";
 
+export async function getAllTags(): Promise<string[]> {
+  const __postsDir = getContentPath();
+  const __tagPath = path.join(__postsDir, "tag.json");
+  const tagMap = JSON.parse(fs.readFileSync(__tagPath).toString());
+
+  return tagMap.data;
+}
+
 export async function getAllPosts({
   page = 1,
+  tag,
 }: PostsDTO): Promise<{ data: PostData[]; total: number }> {
   const __postsDir = getContentPath();
   const allDirents = fs.readdirSync(__postsDir, {
     recursive: true,
     withFileTypes: true,
   });
-  const files = allDirents.filter((dirent) => isPostFile(dirent));
-  const { total, data: postsDirent } = sliceDirentsPerPage(page, files);
-  const posts = postsDirent.map((dirent) =>
-    parsePostContent(dirent, { excerpt: true }),
-  );
-  return { total, data: sortPostsByDate(posts) };
+  const fileDirents = allDirents.filter((dirent) => isPostFile(dirent));
+  let data;
+
+  if (tag) {
+    const postsData = fileDirents.map((dirent) =>
+      parsePostContent(dirent, { excerpt: true }),
+    );
+    const filterdPosts = filterPostsByTag(postsData, tag);
+    const { total, data: posts } = sliceDataPerPage(page, filterdPosts);
+    return { total, data: sortPostsByDate(posts) };
+  } else {
+    const { total, data: postsDirent } = sliceDataPerPage(page, fileDirents);
+    const posts = postsDirent.map((dirent) =>
+      parsePostContent(dirent, { excerpt: true }),
+    );
+    return { total, data: sortPostsByDate(posts) };
+  }
 }
 
 export async function getPostBySlug({ postSlug }: PostDTo) {

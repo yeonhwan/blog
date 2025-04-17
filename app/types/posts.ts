@@ -1,5 +1,6 @@
 export type PostsDTO = {
   page: number;
+  tag?: string;
 };
 
 export type PostDTo = {
