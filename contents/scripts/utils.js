@@ -12,13 +12,13 @@ const getContentPath = () => {
   return path.join(__dirname, "..", "posts");
 };
 
-const getSlugMap = () => {
+const getIndexMap = (name) => {
   const __postsDir = getContentPath();
-  const slugPath = path.join(__postsDir, "slug.json");
-  const slugMap = fs.existsSync(slugPath)
-    ? JSON.parse(fs.readFileSync(slugPath))
+  const indexPath = path.join(__postsDir, `${name}.json`);
+  const indexMap = fs.existsSync(indexPath)
+    ? JSON.parse(fs.readFileSync(indexPath, "utf-8"))
     : {};
-  return slugMap;
+  return indexMap;
 };
 
 /**
@@ -50,4 +50,4 @@ const genNewMetaWithSlug = (meta) => {
   return meta;
 };
 
-export { genNewMetaWithSlug, getContentPath, getSlugMap };
+export { genNewMetaWithSlug, getContentPath, getIndexMap };

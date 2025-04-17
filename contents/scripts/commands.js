@@ -1,7 +1,12 @@
 import path from "path";
 
 import { getContentPath, genNewMetaWithSlug } from "./utils.js";
-import { getAllPosts, writeNewPostWithMeta, upsertSlugMap } from "./files.js";
+import {
+  getAllPosts,
+  writeNewPostWithMeta,
+  upsertSlugMap,
+  upsertTagMap,
+} from "./files.js";
 
 /**
  * check if id is present in latest post meta
@@ -14,7 +19,11 @@ export const validateAndUpdateAllPostsMeta = () => {
   const posts = getAllPosts();
 
   for (let post of posts) {
+    /// tag 프로세스
+    upsertTagMap({ tags: post.data.tags });
+
     if (post.data.slug) continue;
+    // slug 프로세스
 
     const postPath = path.join(__postsDir, post.fileName);
     const newPostMetaWithSlug = genNewMetaWithSlug(post);

@@ -1,7 +1,7 @@
 import matter from "gray-matter";
 import fs from "fs";
 import path from "path";
-import { getContentPath, getSlugMap } from "./utils.js";
+import { getContentPath, getIndexMap } from "./utils.js";
 
 // ------------------------------------------------------
 
@@ -13,8 +13,31 @@ import { getContentPath, getSlugMap } from "./utils.js";
  *  for newly updated posts
  *
  * **/
+const upsertTagMap = (data) => {
+  const tagMap = getIndexMap("tag");
+  const tagPath = path.join(getContentPath(), "tag.json");
+  const tagSet = new Set(tagMap["data"] || []);
+
+  const { tags } = data;
+  for (let tag of tags) {
+    tagSet.add(tag);
+  }
+
+  tagMap["data"] = [...tagSet];
+
+  fs.writeFileSync(tagPath, JSON.stringify(tagMap), "utf-8");
+};
+
+/**
+ * @path : string
+ * @data: {id: string, title: string}
+ *
+ *  create index.json or update index.json
+ *  for newly updated posts
+ *
+ * **/
 const upsertSlugMap = (data) => {
-  const slugMap = getSlugMap();
+  const slugMap = getIndexMap("slug");
   const slugPath = path.join(getContentPath(), "slug.json");
 
   const { slug, fileName } = data;
@@ -81,4 +104,10 @@ const getLatestPost = (path) => {
   return sortedPosts[0];
 };
 
-export { writeNewPostWithMeta, upsertSlugMap, getAllPosts, getLatestPost };
+export {
+  writeNewPostWithMeta,
+  upsertSlugMap,
+  upsertTagMap,
+  getAllPosts,
+  getLatestPost,
+};
