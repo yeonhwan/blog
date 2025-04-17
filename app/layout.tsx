@@ -15,8 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      {/* prettier-ignore */}
-      <body className={`${FiraCode.variable} ${NbgKR.variable} antialiased bg-dark-ash text-text-white mx-mb-x-gutter my-mb-y-gutter`} >
+      <body
+        className={`${FiraCode.variable} ${NbgKR.variable} antialiased bg-dark-ash text-text-white mx-mb-x-gutter my-mb-y-gutter`}
+      >
         <Header />
         {children}
       </body>

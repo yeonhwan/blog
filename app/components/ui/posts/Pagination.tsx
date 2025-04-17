@@ -2,20 +2,11 @@ import Link from "next/link";
 import ArrowDoublIcon from "@/assets/arrows_double.svg";
 import { cva } from "class-variance-authority";
 
-export default function Pagination({
-  total,
-  current,
-}: {
-  total: number;
-  current: number;
-}) {
-  if (total < 1 || current <= 0 || current > total)
-    throw new Error("Invalid page number");
+export default function Pagination({ total, current }: { total: number; current: number }) {
+  if (total < 1 || current <= 0 || current > total) throw new Error("Invalid page number");
 
   const MAX_PAGE_COUNT = 5;
-  // prettier-ignore
   const pageStart = Math.floor((current - 1) / MAX_PAGE_COUNT) * MAX_PAGE_COUNT + 1;
-  // prettier-ignore
   const pageEnd = total - pageStart >= MAX_PAGE_COUNT ? pageStart + MAX_PAGE_COUNT - 1 : total;
   const pageCount = pageEnd - pageStart + 1;
   const pages = Array.from({ length: pageCount }, (_, i) => pageStart + i);

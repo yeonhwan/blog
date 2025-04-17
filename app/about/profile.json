@@ -1,0 +1,15 @@
+{
+  "name": "박연환",
+  "uptime": "28 years",
+  "field": "Frontend",
+  "email": "yeonhwan619@gmail.com",
+  "github": "https://gihub.com/yeonhwan",
+  "locale": "ko-KR, en-US",
+  "language": "Typescript, Javascript",
+  "frontend": "Next, React, Tailwind, Pnpm",
+  "backend": "Node, Express, Nest",
+  "db": "MongoDB, PostgreSQL",
+  "environment": "Git, Brew, Nix",
+  "os": "macOs",
+  "IDE": "Neovim, VSCode"
+}
