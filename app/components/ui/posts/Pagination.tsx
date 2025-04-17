@@ -9,7 +9,7 @@ export default function Pagination({
   total: number;
   current: number;
 }) {
-  if (total <= 1 || current <= 0 || current > total)
+  if (total < 1 || current <= 0 || current > total)
     throw new Error("Invalid page number");
 
   const MAX_PAGE_COUNT = 5;
