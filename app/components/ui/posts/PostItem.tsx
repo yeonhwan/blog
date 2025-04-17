@@ -11,7 +11,7 @@ export default function PostItem({
   const postDate = new Date(date).toLocaleDateString("ko-KR");
   const excerptDefault = "Happy Hacking! 😎";
   return (
-    <Link className="border-b border-b-sub-gray/20" href={`/posts/${slug}`}>
+    <article className="border-b border-b-sub-gray/20">
       <div className="flex flex-col pb-5">
         <p className="text-sub-gray text-mb-sub font-light">{postDate}</p>
         <div className="flex gap-2">
@@ -20,16 +20,25 @@ export default function PostItem({
           ))}
         </div>
         <div className="flex flex-col">
-          <p className="text-text-white text-mb-h2 font-bold">{title}</p>
+          <Link
+            href={`/posts/${slug}`}
+            className="text-text-white text-mb-h2 font-bold"
+          >
+            {title}
+          </Link>
           <p className="text-sub-gray text-mb-sub font-light">
             {excerpt || excerptDefault}
           </p>
         </div>
       </div>
-    </Link>
+    </article>
   );
 }
 
 const PostTag = ({ tagName }: { tagName: string }) => {
-  return <p className="text-mb-sub text-neon-cyan-100 font-light">{tagName}</p>;
+  return (
+    <Link href={`/posts?tag=${tagName}`}>
+      <p className="text-mb-sub text-neon-cyan-100 font-light">{tagName}</p>
+    </Link>
+  );
 };
