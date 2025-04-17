@@ -15,9 +15,7 @@ const getContentPath = () => {
 const getIndexMap = (name) => {
   const __postsDir = getContentPath();
   const indexPath = path.join(__postsDir, `${name}.json`);
-  const indexMap = fs.existsSync(indexPath)
-    ? JSON.parse(fs.readFileSync(indexPath, "utf-8"))
-    : {};
+  const indexMap = fs.existsSync(indexPath) ? JSON.parse(fs.readFileSync(indexPath, "utf-8")) : {};
   return indexMap;
 };
 
@@ -29,7 +27,7 @@ const getIndexMap = (name) => {
  *  e.g. "한글 제목" => "한글-제목"
  * **/
 const genNewMetaWithSlug = (meta) => {
-  const slugMap = getSlugMap();
+  const slugMap = getIndexMap("slug");
   const { title } = meta.data;
   const slug = title
     .toLowerCase()
