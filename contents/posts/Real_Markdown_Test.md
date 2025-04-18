@@ -54,7 +54,7 @@ _Italic Text_
 
 ### Strikethrough
 
-~~Strikethrough Text~~
+~Strikethrough Text~
 
 ---
 
@@ -92,13 +92,37 @@ _Italic Text_
 
 ### Whole Code Block
 
-```javascript
+```javascript showLineNumbers {7-10} /Anagram/ /string/#1 /Count/#2 title="Find Anagram"
+// fixed size array
+function findAnagrams2(s: string, p: string): number[] {
+  const result: number[] = []; // [!code --]
+  if (s.length < p.length) return result; // [!code ++]
 
-```
+  const aCharCode = "a".charCodeAt(0); // [!code highlight]
+  const pCount = new Array(26).fill(0);
+  const sCount = new Array(26).fill(0);
 
-#### Code Block with File Name
+  // Fill initial counts
+  for (let i = 0; i < p.length; i++) {
+    pCount[p.charCodeAt(i) - aCharCode]++;
+    sCount[s.charCodeAt(i) - aCharCode]++;
+  }
 
-```javascript
+  // Slide the window
+  for (let i = 0; i <= s.length - p.length; i++) {
+    if (i > 0) {
+      sCount[s.charCodeAt(i - 1) - aCharCode]--; // remove left
+      sCount[s.charCodeAt(i + p.length - 1) - aCharCode]++; // add right
+    }
+
+    if (arraysEqual(pCount, sCount)) {
+      result.push(i);
+    }
+  }
+
+  return result;
+}
+
 
 ```
 
@@ -118,7 +142,7 @@ You can do fun thing with the command `curl -X POST https://xbin.io/` to say hi 
 
 ## Outer Image
 
-![alt Test Image](https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%ED%95%98%EB%8A%98%EC%9D%98-%EB%AC%B4%EC%A7%80%EA%B0%9C-ZlC0wis-JeY)
+![alt Test Image](https://images.unsplash.com/photo-1694868085098-2bfdaeb91933?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
 
 ## Inner Image
 
