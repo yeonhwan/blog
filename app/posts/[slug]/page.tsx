@@ -1,5 +1,6 @@
 import { getPostBySlug } from "@/actions/posts";
-import { MarkdownRenderer } from "@/components/base/MarkdownRenderer";
+import { MarkdownRenderer } from "@/components/ui/post/MarkdownRenderer";
+import PostHead from "@/components/ui/post/PostHead";
 import { notFound } from "next/navigation";
 
 type PostProps = {
@@ -11,11 +12,12 @@ export default async function Post({ params }: PostProps) {
   const decodedSlug = decodeURIComponent(slug);
   const post = await getPostBySlug({ postSlug: decodedSlug });
   if (!post) notFound();
+  const { data, content } = post;
 
   return (
     <div className="flex flex-col gap-4">
-      <h2>{post.data.title}</h2>
-      <MarkdownRenderer source={post.content} />
+      <PostHead {...data} />
+      <MarkdownRenderer source={content} />
     </div>
   );
 }

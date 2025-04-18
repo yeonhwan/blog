@@ -32,17 +32,13 @@ export async function getAllPosts({
   let data;
 
   if (tag) {
-    const postsData = fileDirents.map((dirent) =>
-      parsePostContent(dirent, { excerpt: true }),
-    );
+    const postsData = fileDirents.map((dirent) => parsePostContent(dirent, { excerpt: true }));
     const filterdPosts = filterPostsByTag(postsData, tag);
     const { total, data: posts } = sliceDataPerPage(page, filterdPosts);
     return { total, data: sortPostsByDate(posts) };
   } else {
     const { total, data: postsDirent } = sliceDataPerPage(page, fileDirents);
-    const posts = postsDirent.map((dirent) =>
-      parsePostContent(dirent, { excerpt: true }),
-    );
+    const posts = postsDirent.map((dirent) => parsePostContent(dirent, { excerpt: true }));
     return { total, data: sortPostsByDate(posts) };
   }
 }

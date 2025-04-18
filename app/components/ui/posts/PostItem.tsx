@@ -1,14 +1,9 @@
 import Link from "next/link";
 import { PostMeta } from "@/types/posts";
+import { getDateStringFromDate } from "@/utils/common";
 
-export default function PostItem({
-  title,
-  excerpt,
-  date,
-  slug,
-  tags,
-}: PostMeta) {
-  const postDate = new Date(date).toLocaleDateString("ko-KR");
+export default function PostItem({ title, excerpt, date, slug, tags }: PostMeta) {
+  const postDate = getDateStringFromDate(date);
   const excerptDefault = "Happy Hacking! 😎";
   return (
     <article className="border-b border-b-sub-gray/20">
@@ -20,22 +15,17 @@ export default function PostItem({
           ))}
         </div>
         <div className="flex flex-col">
-          <Link
-            href={`/posts/${slug}`}
-            className="text-text-white text-mb-h2 font-bold"
-          >
+          <Link href={`/posts/${slug}`} className="text-text-white text-mb-h2 font-bold">
             {title}
           </Link>
-          <p className="text-sub-gray text-mb-sub font-light">
-            {excerpt || excerptDefault}
-          </p>
+          <p className="text-sub-gray text-mb-sub font-light">{excerpt || excerptDefault}</p>
         </div>
       </div>
     </article>
   );
 }
 
-const PostTag = ({ tagName }: { tagName: string }) => {
+export const PostTag = ({ tagName }: { tagName: string }) => {
   return (
     <Link href={`/posts?tag=${tagName}`}>
       <p className="text-mb-sub text-neon-cyan-100 font-light">{tagName}</p>
