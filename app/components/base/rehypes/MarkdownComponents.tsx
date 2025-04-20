@@ -6,6 +6,7 @@ import { Hr } from "./etc";
 import { BlockQuote, Bold, Italic, Pargraph, StrThrough } from "./paragraphs";
 import { LI, OL, UL } from "./lists";
 import { Anchor, Image } from "./attachments";
+import { TH, TD } from "./tables";
 
 export type BaseHTMLProps = HTMLAttributes<HTMLElement>;
 
@@ -27,4 +28,6 @@ export {
   Pre,
   Code,
   Image,
+  TH,
+  TD,
 };

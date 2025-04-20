@@ -2,7 +2,7 @@ import type { MDXProvider } from "@mdx-js/react";
 import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";
-import rehypeAddLiDepth from "./rehypes/plugins/rehypeAddLiDepth";
+import rehypeAddLiDepth from "@/components/base/rehypes/plugins/rehypeAddLiDepth";
 import { transformerNotationDiff } from "@shikijs/transformers";
 
 import {
@@ -23,7 +23,9 @@ import {
   StrThrough,
   UL,
   Image,
-} from "@/components/ui/post/rehypes/MarkdownComponents";
+  TH,
+  TD,
+} from "@/components/base/rehypes/MarkdownComponents";
 
 type MDXComponentOption = React.ComponentProps<typeof MDXProvider>["components"];
 type RehyepePrettyCodeOptions = Parameters<typeof rehypePrettyCode>[0];
@@ -47,6 +49,8 @@ export const MarkdownRenderer = ({ source, ...props }: MDXRemoteProps) => {
     pre: Pre,
     code: Code,
     img: Image,
+    th: TH,
+    td: TD,
   };
 
   const shikiCodeOptions: RehyepePrettyCodeOptions = {

@@ -25,7 +25,7 @@ export default function PostItem({ title, excerpt, date, slug, tags }: PostMeta)
   );
 }
 
-const PostTag = ({ tagName }: { tagName: string }) => {
+export const PostTag = ({ tagName }: { tagName: string }) => {
   return (
     <Link href={`/posts?tag=${tagName}`}>
       <p className="text-mb-sub text-neon-cyan-100 font-light">{tagName}</p>
