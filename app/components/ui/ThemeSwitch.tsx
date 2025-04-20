@@ -12,19 +12,17 @@ export default function ThemeSwitch() {
     setTheme(theme);
   };
 
-  if (currentTheme === "dark")
-    return (
+  return (
+    <div>
       <SunIcon
         onClick={() => handleThemeSwitch("light")}
-        className="w-mb-icon-size h-mb-icon-size stroke-neon-lime"
+        className="w-mb-icon-size h-mb-icon-size stroke-neon-lime dark:block hidden"
       />
-    );
-  else if (currentTheme === "light")
-    return (
+
       <MoonIcon
         onClick={() => handleThemeSwitch("dark")}
-        className="w-mb-icon-size h-mb-icon-size stroke-neon-indigo-100"
+        className="w-mb-icon-size h-mb-icon-size block dark:hidden stroke-neon-blue-300"
       />
-    );
-  else return null;
+    </div>
+  );
 }

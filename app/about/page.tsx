@@ -40,16 +40,18 @@ export default function About() {
           <p>whoami</p>
         </div>
         <Image
+          priority
           data-name="ascii_image"
-          className="my-8 w-3/4 mx-auto block dark:hidden"
+          className="my-8 w-3/4 mx-auto block dark:hidden laptop:max-w-[40%]"
           src="/ascii_blue.png"
           alt="my_proifle"
           width={2071}
           height={1089}
         />
         <Image
+          priority
           data-name="ascii_image"
-          className="my-8 w-3/4 mx-auto hidden dark:block"
+          className="my-8 w-3/4 mx-auto hidden dark:block laptop:max-w-[40%]"
           src="/ascii_green.png"
           alt="my_proifle"
           width={2071}
