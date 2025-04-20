@@ -17,10 +17,11 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body
-        className={`${FiraCode.variable} ${NbgKR.variable} antialiased bg-dark-ash text-text-white mx-mb-x-gutter my-mb-y-gutter`}
+        className={`${FiraCode.variable} ${NbgKR.variable} antialiased bg-dark-ash text-text-white mb-mb-y-gutter`}
       >
         <Header />
-        {children}
+
+        <div className="flex flex-col mx-mb-x-gutter">{children}</div>
       </body>
     </html>
   );

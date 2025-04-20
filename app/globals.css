@@ -29,8 +29,8 @@
 
   /* Spacing */
   --spacing-mb-x-gutter: 1.094rem; /* 17.5px */
-  --spacing-mb-y-gutter: 1.563rem; /* 25px */
-  --spacing-mb-header-height: 37.5px; /* 30px → 37.5px */
+  --spacing-mb-y-gutter: 0.6rem; /* 25px */
+  --spacing-mb-header-height: 3rem;
   --spacing-base-line-height: 1.6; /* 그대로 유지 (비율값) */
   --spacing-content-gutter: 3.516rem; /* 56.25px */
   --spacing-mb-icon-size: 1.25rem; /* 20px */
