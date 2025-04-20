@@ -18,7 +18,7 @@ export default function LinkText({
   const linkStyle = cva(base, {
     variants: {
       isCurrent: {
-        true: ["text-neon-green-100", "underline", "underline-offset-6"],
+        true: ["text-neon-blue-100", "dark:text-neon-green-100", "underline", "underline-offset-6"],
         false: ["text-text-gray"],
       },
     },

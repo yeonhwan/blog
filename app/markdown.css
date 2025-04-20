@@ -62,6 +62,74 @@ pre {
   }
 }
 
+/* code meta */
+figure[data-rehype-pretty-code-figure=""] {
+  figcaption[data-rehype-pretty-code-title=""] {
+    /* background-color: #2d353b; */
+    font-size: 0.8rem;
+    font-family: var(--font-fira);
+    width: fit-content;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.1rem;
+    border-top-right-radius: calc(var(--radius) - 4px);
+    border-top-left-radius: calc(var(--radius) - 4px);
+    transform: translateY(0.25rem);
+  }
+}
+
+/* mulitple themes on code blocks */
+
+[data-theme="light"] {
+  pre[data-theme*="github-light"],
+  code[data-theme*="github-light"] {
+    color: var(--shiki-light);
+    background-color: var(--shiki-light-bg);
+  }
+
+  code[data-theme*="github-light"] span {
+    color: var(--shiki-light);
+  }
+
+  /* shiki-light-vars */
+  figcaption[data-rehype-pretty-code-title=""] {
+    background-color: #ffffff;
+    color: #24292e;
+  }
+
+  /* code-language-descriptor */
+  pre {
+    span[data-language-descriptor=""] {
+      background-color: var(--shiki-light-bg);
+    }
+  }
+}
+
+[data-theme="dark"] {
+  figcaption[data-rehype-pretty-code-title=""],
+  pre[data-theme*="everforest-dark"],
+  code[data-theme*="everforest-dark"] {
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
+  }
+
+  code[data-theme*="everforest-dark"] span {
+    color: var(--shiki-dark);
+  }
+
+  /* shiki-dark-vars */
+  figcaption[data-rehype-pretty-code-title=""] {
+    background-color: #2d353b;
+    color: #d3c6aa;
+  }
+
+  /* code-language-descriptor */
+  pre {
+    span[data-language-descriptor=""] {
+      background-color: var(--shiki-dark-bg);
+    }
+  }
+}
+
 /* code-line-numbers */
 code[data-line-numbers] {
   counter-reset: line;
@@ -131,20 +199,5 @@ code {
   mark[data-highlighted-chars=""][data-chars-id="2"] {
     background-color: rgba(131, 255, 115, 0.2);
     padding: 0 0.125rem;
-  }
-}
-
-/* code meta */
-figure[data-rehype-pretty-code-figure=""] {
-  figcaption[data-rehype-pretty-code-title=""] {
-    background-color: #2d353b;
-    font-size: 0.8rem;
-    font-family: var(--font-fira);
-    width: fit-content;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.1rem;
-    border-top-right-radius: calc(var(--radius) - 4px);
-    border-top-left-radius: calc(var(--radius) - 4px);
-    transform: translateY(0.25rem);
   }
 }

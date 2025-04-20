@@ -13,11 +13,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/base/Command";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/base/Popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/base/Popover";
 import { useVisibilityTrigger } from "@/hooks/useVisibilityTrigger";
 
 export default function TagSelector({
@@ -66,8 +62,8 @@ export default function TagSelector({
                 <CommandItem
                   className={cn(
                     value === tag.value
-                      ? "text-neon-green-100"
-                      : "text-text-white",
+                      ? "text-neon-blue-100 dark:text-neon-green-100"
+                      : "text-deep-gray dark:text-text-white",
                   )}
                   key={tag.value}
                   value={tag.value}

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
   /* Fonts */
@@ -9,6 +9,7 @@
   --font-nbg: var(--font-nbg);
 
   /* Palette */
+
   --color-neon-green-100: #47c78f;
   --color-neon-green-200: #33966b;
   --color-neon-green-300: #2b7253;
@@ -17,15 +18,27 @@
   --color-neon-cyan-200: #55aa9d;
   --color-neon-cyan-300: #46837a;
   --color-neon-cyan-400: #3a655e;
+
+  --color-neon-blue-100: #3182f6;
+  --color-neon-blue-200: #2a70d4;
+  --color-neon-blue-300: #2159a9;
+  --color-neon-blue-400: #1c447d;
+
+  --color-neon-indigo-100: #657aff;
+  --color-neon-indigo-200: #503dfd;
+  --color-neon-indigo-300: #4639c0;
+  --color-neon-indigo-400: #2f2776;
+
   --color-neon-yellow: #e3de4b;
-  --color-neon-blue: #364bd4;
   --color-neon-lime: #b6e34b;
   --color-dark-ash: #222222;
   --color-dark-black: #141414;
   --color-dark-green: #2a3131;
   --color-text-white: #f9fcfb;
+  --color-clean-white: #e9ecf0;
   --color-text-gray: #c1c4c3;
   --color-sub-gray: #7b7b7b;
+  --color-deep-gray: #393939;
 
   /* Spacing */
   --spacing-mb-x-gutter: 1.094rem; /* 17.5px */
@@ -66,7 +79,7 @@
   /* Breakpoint (min-width) */
   --breakpoint-desktop: 1920px;
   --breakpoint-laptop: 1023px;
-  --breakpoint-tablet: 767px;
+  --breakpoint-tablet: 680px;
 
   /* effects */
   --blur-navbar: 3px;

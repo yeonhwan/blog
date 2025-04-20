@@ -15,7 +15,10 @@ export default function PostItem({ title, excerpt, date, slug, tags }: PostMeta)
           ))}
         </div>
         <div className="flex flex-col">
-          <Link href={`/posts/${slug}`} className="text-text-white text-mb-h2 font-bold">
+          <Link
+            href={`/posts/${slug}`}
+            className="text-deep-gray dark:text-text-white text-mb-h2 font-bold"
+          >
             {title}
           </Link>
           <p className="text-sub-gray text-mb-sub font-light">{excerpt || excerptDefault}</p>
@@ -28,7 +31,9 @@ export default function PostItem({ title, excerpt, date, slug, tags }: PostMeta)
 export const PostTag = ({ tagName }: { tagName: string }) => {
   return (
     <Link href={`/posts?tag=${tagName}`}>
-      <p className="text-mb-sub text-neon-cyan-100 font-light">{tagName}</p>
+      <p className="text-mb-sub text-neon-indigo-100 dark:text-neon-cyan-100 font-light">
+        {tagName}
+      </p>
     </Link>
   );
 };

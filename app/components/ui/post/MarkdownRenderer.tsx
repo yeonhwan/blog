@@ -54,7 +54,10 @@ export const MarkdownRenderer = ({ source, ...props }: MDXRemoteProps) => {
   };
 
   const shikiCodeOptions: RehyepePrettyCodeOptions = {
-    theme: "everforest-dark",
+    theme: {
+      light: "github-light",
+      dark: "everforest-dark",
+    },
     grid: true,
     transformers: [transformerNotationDiff()],
   };

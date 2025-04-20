@@ -13,15 +13,12 @@ import {
   DialogTitle,
 } from "@/components/base/Dialog";
 
-function Command({
-  className,
-  ...props
-}: React.ComponentProps<typeof CommandPrimitive>) {
+function Command({ className, ...props }: React.ComponentProps<typeof CommandPrimitive>) {
   return (
     <CommandPrimitive
       data-slot="command"
       className={cn(
-        "bg-dark-ash text-text-white flex h-full w-full flex-col overflow-hidden rounded-md",
+        "bg-clean-white dark:bg-dark-ash text-deep-gray dark:text-text-white flex h-full w-full flex-col overflow-hidden rounded-md",
         className,
       )}
       {...props}
@@ -66,7 +63,7 @@ function CommandInput({
       <CommandPrimitive.Input
         data-slot="command-input"
         className={cn(
-          "placeholder:text-text-white/50  flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
+          "placeholder:text-deep-gray/50 dark:placeholder:text-text-white/50  flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
           className,
         )}
         {...props}
@@ -75,25 +72,17 @@ function CommandInput({
   );
 }
 
-function CommandList({
-  className,
-  ...props
-}: React.ComponentProps<typeof CommandPrimitive.List>) {
+function CommandList({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.List>) {
   return (
     <CommandPrimitive.List
       data-slot="command-list"
-      className={cn(
-        "max-h-[300px] scroll-py-1 overflow-x-hidden overflow-y-auto",
-        className,
-      )}
+      className={cn("max-h-[300px] scroll-py-1 overflow-x-hidden overflow-y-auto", className)}
       {...props}
     />
   );
 }
 
-function CommandEmpty({
-  ...props
-}: React.ComponentProps<typeof CommandPrimitive.Empty>) {
+function CommandEmpty({ ...props }: React.ComponentProps<typeof CommandPrimitive.Empty>) {
   return (
     <CommandPrimitive.Empty
       data-slot="command-empty"
@@ -132,15 +121,12 @@ function CommandSeparator({
   );
 }
 
-function CommandItem({
-  className,
-  ...props
-}: React.ComponentProps<typeof CommandPrimitive.Item>) {
+function CommandItem({ className, ...props }: React.ComponentProps<typeof CommandPrimitive.Item>) {
   return (
     <CommandPrimitive.Item
       data-slot="command-item"
       className={cn(
-        "data-[selected=true]:bg-neon-green-400/30 text-text-white [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "data-[selected=true]:bg-neon-blue-100/30 dark:data-[selected=true]:bg-neon-green-400/30 text-text-white [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className,
       )}
       {...props}
@@ -148,17 +134,11 @@ function CommandItem({
   );
 }
 
-function CommandShortcut({
-  className,
-  ...props
-}: React.ComponentProps<"span">) {
+function CommandShortcut({ className, ...props }: React.ComponentProps<"span">) {
   return (
     <span
       data-slot="command-shortcut"
-      className={cn(
-        "text-muted-foreground ml-auto text-xs tracking-widest",
-        className,
-      )}
+      className={cn("text-muted-foreground ml-auto text-xs tracking-widest", className)}
       {...props}
     />
   );

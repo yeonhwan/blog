@@ -17,7 +17,9 @@ export default function PostHead({ title, date, tags }: PostMeta) {
             ))}
           </div>
         </div>
-        <p className="text-text-white text-mb-h1 laptop:text-dt-h1 font-bold">{title}</p>
+        <p className="text-deep-gray dark:text-text-white text-mb-h1 laptop:text-dt-h1 font-bold">
+          {title}
+        </p>
       </div>
     </div>
   );

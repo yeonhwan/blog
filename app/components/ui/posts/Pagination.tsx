@@ -17,7 +17,7 @@ export default function Pagination({ total, current }: { total: number; current:
   const pageStyle = cva(["text-mb-sub"], {
     variants: {
       current: {
-        true: ["text-neon-green-100", "pointer-events-none"],
+        true: ["text-neon-blue-100", "dark:text-neon-green-100", "pointer-events-none"],
         false: ["text-sub-gray", "pointer-events-auto"],
       },
     },
