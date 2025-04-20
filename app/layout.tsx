@@ -3,6 +3,7 @@ import "./globals.css";
 import "./markdown.css";
 import { FiraCode, NbgKR } from "./fonts/fonts";
 import Header from "@/components/ui/Header";
+import Footer from "@/components/ui/Footer";
 
 export const metadata: Metadata = {
   title: "Yeonhwan's Blog",
@@ -17,11 +18,12 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body
-        className={`${FiraCode.variable} ${NbgKR.variable} antialiased bg-dark-ash text-text-white mb-mb-y-gutter`}
+        className={`${FiraCode.variable} ${NbgKR.variable} antialiased bg-dark-ash text-text-white`}
       >
         <Header />
 
         <div className="flex flex-col mx-mb-x-gutter">{children}</div>
+        <Footer />
       </body>
     </html>
   );

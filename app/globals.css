@@ -34,6 +34,8 @@
   --spacing-base-line-height: 1.6; /* 그대로 유지 (비율값) */
   --spacing-content-gutter: 3.516rem; /* 56.25px */
   --spacing-mb-icon-size: 1.25rem; /* 20px */
+  --spacing-footer-margin: 5rem; /* 80px */
+  --spacing-footer-height: 3.125rem; /* 50px */
 
   /* Typogrpahy (1rem === 16px;) */
   --text-mb-sub: 0.9375rem; /* 15px */
