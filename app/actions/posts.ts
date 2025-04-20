@@ -29,17 +29,16 @@ export async function getAllPosts({
     withFileTypes: true,
   });
   const fileDirents = allDirents.filter((dirent) => isPostFile(dirent));
-  let data;
+  const postsData = fileDirents.map((dirent) => parsePostContent(dirent, { excerpt: true }));
+  const postsSortedByDate = sortPostsByDate(postsData);
 
   if (tag) {
-    const postsData = fileDirents.map((dirent) => parsePostContent(dirent, { excerpt: true }));
-    const filterdPosts = filterPostsByTag(postsData, tag);
-    const { total, data: posts } = sliceDataPerPage(page, filterdPosts);
-    return { total, data: sortPostsByDate(posts) };
+    const filterdPosts = filterPostsByTag(postsSortedByDate, tag);
+    const { total, data } = sliceDataPerPage(page, filterdPosts);
+    return { total, data };
   } else {
-    const { total, data: postsDirent } = sliceDataPerPage(page, fileDirents);
-    const posts = postsDirent.map((dirent) => parsePostContent(dirent, { excerpt: true }));
-    return { total, data: sortPostsByDate(posts) };
+    const { total, data } = sliceDataPerPage(page, postsSortedByDate);
+    return { total, data };
   }
 }
 
@@ -48,6 +47,7 @@ export async function getPostBySlug({ postSlug }: PostDTo) {
   const __indexPath = path.join(__postsDir, "slug.json");
   const slugMap = JSON.parse(fs.readFileSync(__indexPath).toString());
   const postFilename = slugMap[postSlug];
+
   // if it is wrong slug, return null to redirect
   if (postFilename === undefined) return null;
 
