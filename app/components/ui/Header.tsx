@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  Drawer,
-  DrawerContent,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/base/Drawer";
+import { Drawer, DrawerContent, DrawerTitle, DrawerTrigger } from "@/components/base/Drawer";
 import LinkText from "../base/LinkText";
 import TerminalIcon from "@/assets/terminal.svg";
 import SwitchIcon from "@/assets/switch_sun.svg";
@@ -13,6 +8,7 @@ import HamburgerIcon from "@/assets/hamburger.svg";
 import { useState } from "react";
 import { useAutoBlur } from "@/hooks/useAutoBlur";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const ROUTE_LIST = ["posts", "about", "snippets"];
 
@@ -25,14 +21,13 @@ export default function Header() {
     <header
       inert={isNavOpen ? true : undefined}
       tabIndex={isNavOpen ? -1 : undefined}
-      className="w-full h-mb-header-height flex justify-between sticky top-0 items-center bg-dark-ash"
+      className="w-full h-mb-header-height flex justify-between sticky top-0 items-center bg-dark-ash py-4"
     >
-      <div className="flex items-center gap-2">
-        <p className="text-mb-h2 text-neon-green-100 font-fira font-bold">
-          Yeonhwan
-        </p>
+      <Link href="/posts" className="flex items-center gap-2">
+        <p className="text-mb-h2 text-neon-green-100 font-fira font-bold">YH</p>
         <TerminalIcon className="w-mb-icon-size h-mb-icon-size fill-neon-green-100" />
-      </div>
+      </Link>
+
       <div className="flex w-fit gap-5">
         <SwitchIcon className="w-mb-icon-size h-mb-icon-size fill-neon-lime" />
         <Drawer open={isNavOpen} onOpenChange={setNavOpen} direction="right">
