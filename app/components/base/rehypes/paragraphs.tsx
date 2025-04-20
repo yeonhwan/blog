@@ -53,7 +53,7 @@ type BlockQuoteProps = HTMLAttributes<HTMLQuoteElement>;
 export const BlockQuote = ({ children, ...props }: BlockQuoteProps) => {
   return (
     <blockquote
-      className="italic bg-sub-gray/20 pr-[0.5em] flex justify-between relative before:inline-block before:w-[0.5em] before:bg-neon-green-400 before:mr-[0.5em]"
+      className="italic bg-sub-gray/20 pr-[0.5em] flex relative before:inline-block before:w-[0.5em] before:bg-neon-green-400 before:mr-[0.5em]"
       {...props}
     >
       {children}
