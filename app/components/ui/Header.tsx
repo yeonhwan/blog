@@ -21,14 +21,29 @@ export default function Header() {
     <header
       inert={isNavOpen ? true : undefined}
       tabIndex={isNavOpen ? -1 : undefined}
-      className="w-full h-mb-header-height flex justify-between sticky top-0 items-center bg-dark-ash py-mb-y-gutter z-50 px-mb-x-gutter"
+      className="w-full h-mb-header-height tablet:h-tb-header-height flex justify-between sticky top-0 items-center bg-dark-ash py-mb-y-gutter z-50 px-mb-x-gutter"
     >
       <Link href="/posts" className="flex items-center gap-1">
-        <p className="text-mb-h2 text-neon-green-100 font-fira font-bold">YH</p>
-        <TerminalIcon className="w-mb-icon-size h-mb-icon-size fill-neon-green-100 scale-80" />
+        <p className="text-mb-h2 laptop:text-dt-h1 text-neon-green-100 font-fira font-bold">YH</p>
+        <TerminalIcon className="w-mb-icon-size h-mb-icon-size laptop:w-dt-icon-size laptop:h-dt-icon-size fill-neon-green-100 scale-80" />
       </Link>
 
-      <div className="flex w-fit gap-5">
+      {/* >=tablet navbar */}
+      <div className="hidden w-fit gap-5 tablet:flex justify-between items-center">
+        <SwitchIcon className="w-mb-icon-size h-mb-icon-size fill-neon-lime" />
+        {ROUTE_LIST.map((route) => (
+          <LinkText
+            className="font-medium"
+            onClick={() => setNavOpen(false)}
+            key={route}
+            isCurrent={route === pathname}
+            title={route}
+          />
+        ))}
+      </div>
+
+      {/* mobile navbar */}
+      <div className="flex w-fit gap-5 tablet:hidden">
         <SwitchIcon className="w-mb-icon-size h-mb-icon-size fill-neon-lime" />
         <Drawer open={isNavOpen} onOpenChange={setNavOpen} direction="right">
           <DrawerTrigger ref={triggerRef}>

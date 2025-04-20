@@ -3,9 +3,6 @@
 /* blockquote  */
 blockquote p {
   max-width: calc(100% - 1.5em);
-  em {
-    font-size: 1rem;
-  }
 }
 
 /* nested list styling */

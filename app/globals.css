@@ -31,9 +31,11 @@
   --spacing-mb-x-gutter: 1.094rem; /* 17.5px */
   --spacing-mb-y-gutter: 0.6rem; /* 25px */
   --spacing-mb-header-height: 3rem;
+  --spacing-tb-header-height: 3.5rem;
   --spacing-base-line-height: 1.6; /* 그대로 유지 (비율값) */
   --spacing-content-gutter: 3.516rem; /* 56.25px */
   --spacing-mb-icon-size: 1.25rem; /* 20px */
+  --spacing-dt-icon-size: 1.5rem; /* 24px */
   --spacing-footer-margin: 5rem; /* 80px */
   --spacing-footer-height: 3.125rem; /* 50px */
 
@@ -50,10 +52,21 @@
   --text-mb-content-h1: 1.6rem; /* 25px */
   --text-mb-nav-link: 1.953125rem; /* ~31px */
 
+  --text-dt-sub: 1.1rem; /* 15px */
+  --text-dt-base: 1.25rem; /* 20px */
+  --text-dt-h2: 1.5rem; /* ~22.5px */
+  --text-dt-h1: 1.8rem; /* 25px */
+
+  --text-dt-content-p: 1.2rem; /* 20px */
+  --text-dt-content-h4: 1.25rem; /* 24px */
+  --text-dt-content-h3: 1.35rem; /* 24px */
+  --text-dt-content-h2: 1.6rem; /* 24px */
+  --text-dt-content-h1: 1.7rem; /* 25px */
+
   /* Breakpoint (min-width) */
   --breakpoint-desktop: 1920px;
-  --breakpoint-laptop: 1024px;
-  --breakpoint-tablet: 680px;
+  --breakpoint-laptop: 1023px;
+  --breakpoint-tablet: 767px;
 
   /* effects */
   --blur-navbar: 3px;

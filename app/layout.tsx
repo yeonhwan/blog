@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body
-        className={`${FiraCode.variable} ${NbgKR.variable} antialiased bg-dark-ash text-text-white`}
+        className={`${FiraCode.variable} ${NbgKR.variable} antialiased bg-dark-ash text-text-white tablet:mx-[12.5%] laptop:mx-[20%] desktop:mx-[25%]`}
       >
         <Header />
 

@@ -5,7 +5,7 @@ type AnchorProps = HTMLAttributes<HTMLAnchorElement>;
 export const Anchor = ({ children, ...props }: AnchorProps) => {
   return (
     <a
-      className="text-mb-base text-neon-cyan-100 font-regular underline-offset-[0.3em] decoration-1 underline decoration-wavy"
+      className="text-mb-base laptop:text-dt-content-p text-neon-cyan-100 font-regular underline-offset-[0.3em] decoration-1 underline decoration-wavy"
       {...props}
     >
       {children}

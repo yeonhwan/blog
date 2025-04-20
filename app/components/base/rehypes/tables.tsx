@@ -2,13 +2,19 @@ import { HTMLAttributes } from "react";
 
 type TableCellProps = HTMLAttributes<HTMLTableCellElement>;
 const TH = ({ children, ...props }: TableCellProps) => (
-  <th className="border border-sub-gray/50 bg-neon-green-400/30" {...props}>
+  <th
+    className="border border-sub-gray/50 bg-neon-green-400/30 text-mb-content-p laptop:text-dt-content-p"
+    {...props}
+  >
     {children}
   </th>
 );
 
 const TD = ({ children, ...props }: TableCellProps) => (
-  <td className="border border-sub-gray/30 text-center" {...props}>
+  <td
+    className="border border-sub-gray/30 text-center text-mb-content-p laptop:text-dt-content-p"
+    {...props}
+  >
     {children}
   </td>
 );

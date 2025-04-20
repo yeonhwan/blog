@@ -20,12 +20,12 @@ export default async function Post({ params }: PostProps) {
     <div className="flex flex-col gap-4">
       <PostHead {...data} />
       <MarkdownRenderer source={content} />
-      <div className="flex w-full items-center border-t border-dashed border-t-sub-gray/30 mt-24 pt-5 justify-between">
-        <Link href="/posts" className="flex items-center gap-1">
-          <ChevronLeftIcon className="w-4 h-4" />
+      <div className="flex w-full items-center border-t border-dashed border-t-sub-gray/30 mt-24 pt-5 laptop:mt-40 laptop:pt-10 justify-between">
+        <Link href="/posts" className="flex items-center gap-1 laptop:text-dt-base">
+          <ChevronLeftIcon className="w-4 h-4 laptop:w-6 laptop:h-6" />
           <p>All Posts</p>
         </Link>
-        <div className="text-xs">Issue on Github</div>
+        <div className="text-xs tablet:text-base laptop:text-lg">Issue on Github</div>
       </div>
     </div>
   );
