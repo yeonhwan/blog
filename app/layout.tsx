@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./markdown.css";
 import { FiraCode, NbgKR } from "./fonts/fonts";
 import Header from "@/components/ui/Header";
 
