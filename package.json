@@ -11,8 +11,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "update-contents": "node ./contents/main.js",
-    "prepare": "husky"
+    "delete-contents": "",
+    "update-contents": "node ./scripts/main.js",
+    "prepare": "husky",
+    "cli": "pnpm --filter scripts run cli"
   },
   "dependencies": {
     "@mdx-js/react": "^3.1.0",

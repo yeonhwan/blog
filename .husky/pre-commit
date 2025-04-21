@@ -2,7 +2,7 @@ echo "🔍 커밋 대상 변경 파일 검사 중..."
 
 if git diff --cached --name-only | grep -qE '^"?contents/posts/.*\.(md|mdx)"?$' ; then
   echo "🟡 포스트 내용이 업데이트 되었습니다. 포스트 관련 업데이트 스크립트를 실행합니다. 🟡"
-  pnpm exec node ./contents/main.js
+  pnpm cli -u
   git add ./contents/posts
 else
   echo "✅ 포스트 내용 변경 없습니다."
