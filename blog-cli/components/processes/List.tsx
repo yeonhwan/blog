@@ -58,9 +58,13 @@ export const List = () => {
     <>
       {stageIdx >= 1 && (
         <>
+          <Newline />
           <Text color="greenBright">포스트를 표시합니다.</Text>
           <Text color="greenBright">🟢 : 공개</Text>
           <Text color="greenBright">🔴 : 비공개</Text>
+          <Newline />
+          <Text color="greenBright">Tab to select</Text>
+          <Text color="blueBright">Return to confirm</Text>
           {items?.length && (
             <MultiSelector
               modifier={(item: OptionDefault & PostMeta) => {

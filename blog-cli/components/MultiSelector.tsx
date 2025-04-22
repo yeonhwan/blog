@@ -44,7 +44,14 @@ export default function MultiSelector<T extends OptionDefault>({
   const boxProps = { ...defaultSelectorOption, ...selctorOption };
 
   const selectHandler = () => {
-    setSelected((prevSelected) => [...prevSelected, curSelectedOption]);
+    setSelected((prevSelected) => {
+      const hasAlreadySelected = prevSelected.find((item) => item === curSelectedOption);
+      if (hasAlreadySelected) {
+        return prevSelected.filter((item) => item !== curSelectedOption);
+      } else {
+        return [...prevSelected, curSelectedOption];
+      }
+    });
   };
 
   const confirmHandler = () => {
