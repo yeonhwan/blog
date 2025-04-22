@@ -1,9 +1,12 @@
 ---
 title: 666의 무서운 진실
 date: 2024-06-06T00:00:00.000Z
-tags: ["Diary", "Scary"]
+tags:
+  - Diary
+  - Scary
 slug: 666의-무서운-진실
 excerpt: 666의 무서운 진실에 대한 포스팅입니다.
+publish: false
 ---
 
 # First Heading

@@ -20,18 +20,18 @@ const Index = () => {
         setSelectedOption(CLI_OPTIONS.find((option) => option.step === "exit") || null);
       }
       if (input === "c") {
-        // create new post
         setSelectedOption(CLI_OPTIONS.find((option) => option.step === "create") || null);
       }
 
       if (input === "d") {
-        // delete selected post
-
         setSelectedOption(CLI_OPTIONS.find((option) => option.step === "delete") || null);
       }
 
+      if (input === "l") {
+        setSelectedOption(CLI_OPTIONS.find((option) => option.step === "list") || null);
+      }
+
       if (input === "u") {
-        // update selected post
         setSelectedOption(CLI_OPTIONS.find((option) => option.step === "update") || null);
       }
     },

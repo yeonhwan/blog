@@ -4,6 +4,7 @@ import { Create } from "./processes/Create";
 import { Exit } from "./processes/Exit";
 import { Update } from "./processes/Update";
 import { Delete } from "./processes/Delete";
+import { List } from "./processes/List";
 
 export default function Processors({ step }: { step: CLIStep }) {
   switch (step) {
@@ -15,6 +16,9 @@ export default function Processors({ step }: { step: CLIStep }) {
 
     case "update":
       return <Update />;
+
+    case "list":
+      return <List />;
 
     default:
       return <Exit />;

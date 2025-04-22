@@ -5,6 +5,7 @@ tags:
   - Markdown
   - 테스트
 excerpt: 진짜 마크다운 테스트용
+publish: true
 slug: real-markdown-test-post
 ---
 

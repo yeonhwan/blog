@@ -2,6 +2,7 @@
 title: Next.js 15의 미리보기
 date: 2023-04-06T00:00:00.000Z
 tags: ["Next", "React"]
+publish: true
 slug: nextjs-15의-미리보기
 ---
 

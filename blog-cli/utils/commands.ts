@@ -1,5 +1,11 @@
 import { getSlugMap, getTagMap, createNewSlugFromTitle, revalidateSlugWithSlugMap } from "./utils";
-import { createNewPostWithMeta, deletePost, getAllPosts, upsertIndexMap } from "./files.js";
+import {
+  createNewPostWithMeta,
+  deletePost,
+  getAllPosts,
+  upsertIndexMap,
+  updatePostState,
+} from "./files.js";
 import { PostMeta } from "../types";
 
 export const createNewPost = ({ title, excerpt }: { title: string; excerpt: string }) => {
@@ -11,6 +17,7 @@ export const createNewPost = ({ title, excerpt }: { title: string; excerpt: stri
     title,
     excerpt,
     date: new Date().toISOString(),
+    publish: false,
     slug,
     tags: [],
   };
@@ -39,6 +46,14 @@ export const updatePostsIndexes = () => {
   upsertIndexMap(slugMap, "slug");
 
   return { tags: [...newTags], slugs: newSlugs };
+};
+
+export const updatePostsState = (postNames: string[], state: boolean) => {
+  for (let postName of postNames) {
+    updatePostState(postName, state);
+  }
+
+  return;
 };
 
 export const deletePostAndUpdate = (postName: string) => {

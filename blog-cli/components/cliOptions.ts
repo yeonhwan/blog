@@ -9,6 +9,7 @@ export const CLI_OPTIONS = [
   { prompt: "(u) 📦 포스트 업데이트", step: "update", key: "u" },
   { prompt: "(d) ❌ 포스트 삭제", step: "delete", key: "d" },
   { prompt: "(q) ↩️ 종료", step: "exit", key: "q" },
+  { prompt: "(l) 📋 리스트", step: "list", key: "l" },
 ] as const;
 
 export type CLIStep = (typeof CLI_OPTIONS)[number]["step"];

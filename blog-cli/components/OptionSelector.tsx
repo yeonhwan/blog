@@ -2,30 +2,42 @@ import React, { useState, useEffect } from "react";
 import { Box, type Key, useInput, Text } from "ink";
 
 export type OptionDefault = {
+  [key: string]: any;
   prompt: string;
 };
 
-type SelectorOption = {
-  color?: string;
+type SelecterExtendOption = {
+  selectedColor?: string;
 };
+
+type SelectorContainerProps = React.ComponentProps<typeof Box>;
 
 type SelectorProps<T extends OptionDefault> = {
   options: readonly T[] | T[];
-  selctorOption?: SelectorOption;
+  selctorOption?: SelectorContainerProps & SelecterExtendOption;
   onConfirm: (option: T) => void;
   isActive?: boolean;
 };
 
+const defaultSelectorOption = {
+  width: "50%",
+  borderStyle: "classic",
+  flexDirection: "column",
+  overflowY: "visible",
+  padding: 1,
+} as SelectorContainerProps;
+
 export default function OptionSelector<T extends OptionDefault>({
   options,
-  selctorOption = {},
+  selctorOption = { selectedColor: "greenBright" },
   onConfirm = () => {},
   isActive = true,
 }: SelectorProps<T>) {
   const [optionIndex, setOptionIndex] = useState(0);
   const [confirmed, setConfirmed] = useState<(typeof options)[number] | null>(null);
   const selectedOption = options[optionIndex];
-  const selectedColor = selctorOption.color || "greenBright";
+  const boxProps = { ...defaultSelectorOption, ...selctorOption };
+  const { selectedColor } = selctorOption;
 
   useEffect(() => {
     confirmed && onConfirm(confirmed as T);
@@ -61,7 +73,7 @@ export default function OptionSelector<T extends OptionDefault>({
   useInput(inputHandler, { isActive });
 
   return (
-    <Box width="50%" borderStyle="classic" flexDirection="column" padding={1} marginTop={1}>
+    <Box {...boxProps}>
       {options.map((option, index) => (
         <Text backgroundColor={optionIndex === index ? selectedColor : ""} key={index}>
           {option.prompt}

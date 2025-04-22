@@ -4,6 +4,15 @@ import path from "path";
 import { createFilenameFromTitle, getContentPath } from "./utils";
 import { PostMeta } from "../types";
 
+const updatePostState = (postName: string, state: boolean) => {
+  const __postsDir = getContentPath();
+  const postPath = path.join(__postsDir, postName);
+  const postMeta = matter.read(postPath);
+  const newMeta = { ...postMeta.data, publish: state };
+  fs.writeFileSync(postPath, matter.stringify(postMeta.content, newMeta), "utf-8");
+  return;
+};
+
 const deletePost = (postName: string) => {
   const __postsDir = getContentPath();
   const postPath = path.join(__postsDir, postName);
@@ -48,4 +57,4 @@ const getAllPosts = () => {
   return postsMeta;
 };
 
-export { getAllPosts, upsertIndexMap, createNewPostWithMeta, deletePost };
+export { getAllPosts, upsertIndexMap, createNewPostWithMeta, deletePost, updatePostState };
