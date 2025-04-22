@@ -52,7 +52,7 @@ export default async function Post({ params }: PostProps) {
             <ChevronLeftIcon className="w-4 h-4 laptop:w-6 laptop:h-6" />
             <p>All Posts</p>
           </Link>
-          <div className="text-xs tablet:text-base laptop:text-lg">Issue on Github</div>
+          {/* <div className="text-xs tablet:text-base laptop:text-lg">Issue on Github</div> */}
         </nav>
       </section>
     </main>
