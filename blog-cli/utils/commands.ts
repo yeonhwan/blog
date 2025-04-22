@@ -32,7 +32,8 @@ export const updatePostsIndexes = () => {
   const newSlugs = slugMap;
 
   for (let post of posts) {
-    const { tags, slug } = post.data;
+    const { tags, slug, publish } = post.data;
+    if (!publish) continue;
 
     for (let tag of tags) {
       newTags.add(tag);
