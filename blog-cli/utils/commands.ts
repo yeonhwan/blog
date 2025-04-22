@@ -1,4 +1,4 @@
-import { getSlugMap, getTagMap, createNewSlugFromTitle, revalidateSlugWithSlugMap } from "./utils";
+import { getSlugMap, createNewSlugFromTitle, revalidateSlugWithSlugMap } from "./utils";
 import {
   createNewPostWithMeta,
   deletePost,
@@ -26,33 +26,35 @@ export const createNewPost = ({ title, excerpt }: { title: string; excerpt: stri
 
 export const updatePostsIndexes = () => {
   const posts = getAllPosts();
-  const tagMap = getTagMap();
   const slugMap = getSlugMap();
-  const newTags = new Set(tagMap["data"] || []);
-  const newSlugs = slugMap;
+  const newTags = new Set<string>([]);
 
   for (let post of posts) {
     const { tags, slug, publish } = post.data;
-    if (!publish) continue;
 
     for (let tag of tags) {
+      if (!publish) continue;
       newTags.add(tag);
     }
 
-    if (slug in slugMap) continue;
-    newSlugs[slug] = post.fileName;
+    // slug should keep being used
+    if (slugMap[slug] !== post.fileName) {
+      slugMap[slug] = post.fileName;
+    }
   }
 
   upsertIndexMap({ data: [...newTags] }, "tag");
   upsertIndexMap(slugMap, "slug");
 
-  return { tags: [...newTags], slugs: newSlugs };
+  return { tags: [...newTags], slugs: slugMap };
 };
 
 export const updatePostsState = (postNames: string[], state: boolean) => {
   for (let postName of postNames) {
     updatePostState(postName, state);
   }
+
+  updatePostsIndexes();
 
   return;
 };
