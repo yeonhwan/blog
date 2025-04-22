@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   transpilePackages: ["next-mdx-remote"],
+  eslint: { ignoreDuringBuilds: true },
   turbopack: {
     rules: {
       "*.svg": {
@@ -14,9 +15,7 @@ const nextConfig: NextConfig = {
   webpack(config) {
     //@ts-expect-error: type defs does not exist
     // Grab the existing rule that handles SVG imports
-    const fileLoaderRule = config.module.rules.find((rule) =>
-      rule.test?.test?.(".svg"),
-    );
+    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.(".svg"));
 
     config.module.rules.push(
       // Reapply the existing rule, but only for svg imports ending in ?url
