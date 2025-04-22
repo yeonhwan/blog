@@ -28,9 +28,12 @@ export const updatePostsIndexes = () => {
   const posts = getAllPosts();
   const slugMap = getSlugMap();
   const newTags = new Set<string>([]);
+  const usedSlug = new Set<string>();
 
   for (let post of posts) {
     const { tags, slug, publish } = post.data;
+
+    usedSlug.add(slug);
 
     for (let tag of tags) {
       if (!publish) continue;
@@ -40,6 +43,13 @@ export const updatePostsIndexes = () => {
     // slug should keep being used
     if (slugMap[slug] !== post.fileName) {
       slugMap[slug] = post.fileName;
+    }
+  }
+
+  // remove slugs that are not used anymore
+  for (let slug in slugMap) {
+    if (!usedSlug.has(slug)) {
+      delete slugMap[slug];
     }
   }
 
