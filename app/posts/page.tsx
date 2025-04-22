@@ -53,7 +53,7 @@ export default async function Posts({ searchParams }: PostsProps) {
   const tags = await getAllTags();
 
   return (
-    <main>
+    <main className="min-h-screen">
       <PageTitle title="Posts" />
       <div className="flex w-full justify-end mb-10">
         <TagSelector key={tag} current={tag} data={tags} />

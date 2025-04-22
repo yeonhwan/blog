@@ -24,7 +24,7 @@ export default function TagSelector({
   current: string | undefined;
 }) {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(current);
+  const [value, setValue] = useState(current ?? "");
 
   const closePopup = () => setOpen(false);
   const targetRef = useVisibilityTrigger<HTMLButtonElement>(
