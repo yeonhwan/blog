@@ -6,18 +6,28 @@ import MailIcon from "@/assets/mail.svg";
 import DocumentIcon from "@/assets/document.svg";
 import GithubIcon from "@/assets/github.svg";
 import Link from "next/link";
-import { useTheme } from "next-themes";
+
+export function generateMetadata() {
+  return {
+    title: `YH_Blog :: About Me`,
+    description: `YH_Blog :: About Me`,
+    openGraph: {
+      type: "article",
+      title: `YH_Blog :: About Me`,
+      description: `YH_Blog :: About Me`,
+      url: `https://example.com/about`,
+    },
+  };
+}
 
 export default function About() {
   const myProfile = profile;
   const keys = Object.keys(myProfile) as (keyof typeof myProfile)[];
 
   return (
-    <div className="flex flex-col">
-      <div className="flex">
-        <PageTitle title={"about"} />
-      </div>
-      <div className="flex gap-2 mx-auto items-center my-4">
+    <main className="flex flex-col">
+      <PageTitle title={"about"} />
+      <section className="flex gap-2 mx-auto items-center my-4">
         <Link href="https://github.com/yeonhwan">
           <GithubIcon className="w-5 h-5 tablet:w-6 tablet:h-6 laptop:w-7 laptop:h-7" />
         </Link>
@@ -27,8 +37,8 @@ export default function About() {
         <Link href="/yeonhwan_resume.pdf" download>
           <DocumentIcon className="w-5 h-5 tablet:w-6 tablet:h-6 laptop:w-7 laptop:h-7" />
         </Link>
-      </div>
-      <div className="flex bg-text-white dark:bg-dark-green w-full rounded-sm flex-col px-4">
+      </section>
+      <section className="flex bg-text-white dark:bg-dark-green w-full rounded-sm flex-col px-4">
         <div data-name="status_bar" className="flex justify-between gap-2 w-fit my-4">
           <i className="rounded-full w-2 h-2 bg-red-500"></i>
           <i className="rounded-full w-2 h-2 bg-yellow-500"></i>
@@ -57,17 +67,17 @@ export default function About() {
           width={2071}
           height={1089}
         />
-        <div data-name="content" className="w-fit font-fira flex flex-col gap-2 my-4">
-          <p className="w-fit text-neon-blue-100 dark:text-neon-green-200 text-sm laptop:text-base font-semibold border-b border-sub-gray border-dashed pb-1">
+        <ul data-name="content" className="w-fit font-fira flex flex-col gap-2 my-4">
+          <li className="w-fit text-neon-blue-100 dark:text-neon-green-200 text-sm laptop:text-base font-semibold border-b border-sub-gray border-dashed pb-1">
             yeonhwan-park@seoul
-          </p>
+          </li>
           {keys.map((key) => (
-            <div key={key} className="flex text-xs laptop:text-base">
+            <li key={key} className="flex text-xs laptop:text-base">
               <p className="text-neon-blue-100 dark:text-neon-green-300 font-semibold">{`${key}: `}</p>
               <p className="ml-1">{myProfile[key]}</p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
         <div data-name="color-box" className="flex flex-col items-end w-fit mb-10">
           <div className="flex">
             {palette.slice(0, 8).map((color, idx) => {
@@ -93,7 +103,7 @@ export default function About() {
             })}
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

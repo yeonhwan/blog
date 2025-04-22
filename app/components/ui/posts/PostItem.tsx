@@ -6,9 +6,14 @@ export default function PostItem({ title, excerpt, date, slug, tags }: PostMeta)
   const postDate = getDateStringFromDate(date);
   const excerptDefault = "Happy Hacking! 😎";
   return (
-    <article className="border-b border-b-sub-gray/20">
-      <div className="flex flex-col pb-5">
-        <p className="text-sub-gray text-mb-sub font-light">{postDate}</p>
+    <li className="border-b border-b-sub-gray/20">
+      <article className="flex flex-col pb-5">
+        <time
+          dateTime={new Date(postDate).toISOString()}
+          className="text-sub-gray text-mb-sub font-light"
+        >
+          {postDate}
+        </time>
         <div className="flex gap-2">
           {tags.map((tag) => (
             <PostTag key={slug + tag} tagName={tag} />
@@ -23,8 +28,8 @@ export default function PostItem({ title, excerpt, date, slug, tags }: PostMeta)
           </Link>
           <p className="text-sub-gray text-mb-sub font-light">{excerpt || excerptDefault}</p>
         </div>
-      </div>
-    </article>
+      </article>
+    </li>
   );
 }
 

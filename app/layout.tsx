@@ -7,8 +7,8 @@ import Footer from "@/components/ui/Footer";
 import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
-  title: "Yeonhwan's Blog",
-  description: "Yeonhwan's Blog --",
+  title: "YH_Blog",
+  description: "YH_Blog :: Yeonhwan's Blog",
 };
 
 export default function RootLayout({

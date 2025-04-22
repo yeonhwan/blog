@@ -23,6 +23,7 @@ export async function getAllTags(): Promise<string[]> {
 export async function getAllPosts({
   page = 1,
   tag,
+  ssg = false,
 }: PostsDTO): Promise<{ data: PostData[]; total: number }> {
   const __postsDir = getContentPath();
   const allDirents = fs.readdirSync(__postsDir, {
@@ -31,6 +32,9 @@ export async function getAllPosts({
   });
   const fileDirents = allDirents.filter((dirent) => isPostFile(dirent));
   const postsData = fileDirents.map((dirent) => parsePostContent(dirent, { excerpt: true }));
+
+  if (ssg) return { data: postsData, total: postsData.length };
+
   const postsSortedByDate = sortPostsByDate(postsData);
   const postsFilteredByPublish = filterPostsByPublish(postsSortedByDate);
 

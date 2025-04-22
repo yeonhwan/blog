@@ -63,16 +63,18 @@ export const MarkdownRenderer = ({ source, ...props }: MDXRemoteProps) => {
   };
 
   return (
-    <MDXRemote
-      options={{
-        mdxOptions: {
-          remarkPlugins: [remarkGfm],
-          rehypePlugins: [[rehypePrettyCode, shikiCodeOptions], rehypeAddLiDepth],
-        },
-      }}
-      components={{ ...components }}
-      source={source}
-      {...props}
-    />
+    <section>
+      <MDXRemote
+        options={{
+          mdxOptions: {
+            remarkPlugins: [remarkGfm],
+            rehypePlugins: [[rehypePrettyCode, shikiCodeOptions], rehypeAddLiDepth],
+          },
+        }}
+        components={{ ...components }}
+        source={source}
+        {...props}
+      />
+    </section>
   );
 };

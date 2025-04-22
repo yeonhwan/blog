@@ -201,3 +201,8 @@ code {
     padding: 0 0.125rem;
   }
 }
+
+/* table */
+table {
+  width: 100%;
+}

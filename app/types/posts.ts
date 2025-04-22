@@ -1,6 +1,7 @@
 export type PostsDTO = {
-  page: number;
+  page?: number;
   tag?: string;
+  ssg?: boolean;
 };
 
 export type PostDTo = {

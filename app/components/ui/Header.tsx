@@ -31,7 +31,7 @@ export default function Header() {
       </Link>
 
       {/* >=tablet navbar */}
-      <div className="hidden w-fit gap-5 tablet:flex justify-between items-center">
+      <nav className="hidden w-fit gap-5 tablet:flex justify-between items-center">
         <ThemeSwitch />
         {ROUTE_LIST.map((route) => (
           <LinkText
@@ -42,10 +42,10 @@ export default function Header() {
             title={route}
           />
         ))}
-      </div>
+      </nav>
 
       {/* mobile navbar */}
-      <div className="flex w-fit gap-5 tablet:hidden">
+      <aside className="flex w-fit gap-5 tablet:hidden">
         <ThemeSwitch />
         <Drawer open={isNavOpen} onOpenChange={setNavOpen} direction="right">
           <DrawerTrigger ref={triggerRef}>
@@ -67,7 +67,7 @@ export default function Header() {
             </div>
           </DrawerContent>
         </Drawer>
-      </div>
+      </aside>
     </header>
   );
 }

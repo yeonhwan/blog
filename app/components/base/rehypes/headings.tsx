@@ -5,7 +5,7 @@ type HeadingProps = HTMLAttributes<HTMLHeadingElement>;
 export const H1 = ({ children, ...props }: HeadingProps) => {
   return (
     <h1
-      className="text-mb-content-h1 leading-[2.5] laptop:text-dt-content-h1 text-neon-blue-100 dark:text-neon-green-100"
+      className="text-mb-content-h1 leading-[1.8] my-4 laptop:text-dt-content-h1 text-neon-blue-100 dark:text-neon-green-100"
       {...props}
     >
       {children}
@@ -16,7 +16,7 @@ export const H1 = ({ children, ...props }: HeadingProps) => {
 export const H2 = ({ children, ...props }: HeadingProps) => {
   return (
     <h2
-      className="text-mb-content-h2 leading-[2] laptop:text-dt-content-h2 text-neon-blue-100 dark:text-neon-green-100 font-nbg"
+      className="text-mb-content-h2 leading-[1.8] my-4 laptop:text-dt-content-h2 text-neon-blue-100 dark:text-neon-green-100 font-nbg"
       {...props}
     >
       {children}
@@ -27,7 +27,7 @@ export const H2 = ({ children, ...props }: HeadingProps) => {
 export const H3 = ({ children, ...props }: HeadingProps) => {
   return (
     <h3
-      className="text-mb-content-h3 leading-[1.8] laptop:text-dt-content-h3 text-neon-blue-100 dark:text-neon-green-100 font-nbg"
+      className="text-mb-content-h3 leading-[1.7] my-4 laptop:text-dt-content-h3 text-neon-blue-100 dark:text-neon-green-100 font-nbg"
       {...props}
     >
       {children}
@@ -38,7 +38,7 @@ export const H3 = ({ children, ...props }: HeadingProps) => {
 export const H4 = ({ children, ...props }: HeadingProps) => {
   return (
     <h4
-      className="text-mb-content-h4 leading-[1.6] laptop:text-dt-content-h4 text-neon-blue-300 dark:text-neon-green-300 font-nbg"
+      className="text-mb-content-h4 leading-[1.6] my-3 laptop:text-dt-content-h4 text-neon-blue-300 dark:text-neon-green-300 font-nbg"
       {...props}
     >
       {children}
