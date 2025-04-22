@@ -2,13 +2,14 @@ import React from "react";
 import { Newline, Text } from "ink";
 import TextInput from "ink-text-input";
 import { createNewPost } from "../../utils/commands";
+import { NameWithPath } from "../../types";
 
 // create new posts with pre-filed front-matter template
 export const Create = () => {
   const [stageIdx, setStageIdx] = React.useState(1);
   const [title, setTitle] = React.useState<string>("");
   const [excerpt, setExcerpt] = React.useState<string>("");
-  const [postInfo, setPostInfo] = React.useState<any>(null);
+  const [postInfo, setPostInfo] = React.useState<NameWithPath | null>(null);
 
   React.useEffect(() => {
     if (stageIdx === 3) {
@@ -22,7 +23,7 @@ export const Create = () => {
         process.exit(0);
       }, 500);
     }
-  }, [stageIdx]);
+  }, [stageIdx, excerpt, title]);
 
   return (
     <>
@@ -57,12 +58,12 @@ export const Create = () => {
           <Text color="yellowBright">excerpt : {excerpt}</Text>
         </>
       )}
-      {stageIdx >= 4 && (
+      {stageIdx >= 4 && postInfo && (
         <>
           <Newline />
           <Text color="greenBright">포스트가 생성 되었습니다.</Text>
           <Text color="yellowBright">post-name : {postInfo.fileName}</Text>
-          <Text color="yellowBright">post-path : {postInfo.newPostPath}</Text>
+          <Text color="yellowBright">post-path : {postInfo.postPath}</Text>
         </>
       )}
     </>

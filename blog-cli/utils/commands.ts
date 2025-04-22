@@ -6,7 +6,7 @@ import {
   upsertIndexMap,
   updatePostState,
 } from "./files.js";
-import { PostMeta } from "../types";
+import { PostMeta } from "../../app/types";
 
 export const createNewPost = ({ title, excerpt }: { title: string; excerpt: string }) => {
   const slugMap = getSlugMap();
@@ -21,6 +21,7 @@ export const createNewPost = ({ title, excerpt }: { title: string; excerpt: stri
     slug,
     tags: [],
   };
+
   return createNewPostWithMeta(newPostMeta);
 };
 
@@ -30,12 +31,12 @@ export const updatePostsIndexes = () => {
   const newTags = new Set<string>([]);
   const usedSlug = new Set<string>();
 
-  for (let post of posts) {
+  for (const post of posts) {
     const { tags, slug, publish } = post.data;
 
     usedSlug.add(slug);
 
-    for (let tag of tags) {
+    for (const tag of tags) {
       if (!publish) continue;
       newTags.add(tag);
     }
@@ -47,7 +48,7 @@ export const updatePostsIndexes = () => {
   }
 
   // remove slugs that are not used anymore
-  for (let slug in slugMap) {
+  for (const slug in slugMap) {
     if (!usedSlug.has(slug)) {
       delete slugMap[slug];
     }
@@ -60,7 +61,7 @@ export const updatePostsIndexes = () => {
 };
 
 export const updatePostsState = (postNames: string[], state: boolean) => {
-  for (let postName of postNames) {
+  for (const postName of postNames) {
     updatePostState(postName, state);
   }
 

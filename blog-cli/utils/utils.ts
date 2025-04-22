@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import { IndexMap } from "../types";
 
 const getContentPath = () => {
   const __filename = fileURLToPath(import.meta.url);
@@ -10,7 +11,7 @@ const getContentPath = () => {
 };
 
 const createNewSlugFromTitle = (title: string) => {
-  let slug = title
+  const slug = title
     .toLowerCase()
     .replace(/\s+/g, "-")
     // 한글, 영어, 숫자, 하이픈 허용
@@ -27,11 +28,11 @@ const getIndexMap = (name: string) => {
   return indexMap;
 };
 
-const getSlugMap = () => {
+const getSlugMap = (): IndexMap => {
   return getIndexMap("slug");
 };
 
-const getTagMap = () => {
+const getTagMap = (): IndexMap => {
   return getIndexMap("tag");
 };
 

@@ -3,11 +3,13 @@ import { Box, Newline, Text, useInput } from "ink";
 import { getAllPosts } from "../../utils/files";
 import { deletePostAndUpdate } from "../../utils/commands";
 import OptionSelector, { OptionDefault } from "../OptionSelector";
+import { PostMetaWithExtra } from "../../types";
 
+type DeleteOptionItem = PostMetaWithExtra<OptionDefault>;
 export const Delete = () => {
   const [stageIdx, setStageIdx] = React.useState<number>(1);
-  const [posts, setPosts] = React.useState<OptionDefault[] | null>(null);
-  const [selected, setSelected] = React.useState<any>(null);
+  const [posts, setPosts] = React.useState<DeleteOptionItem[] | null>(null);
+  const [selected, setSelected] = React.useState<DeleteOptionItem | null>(null);
   const [yn, setYN] = React.useState<string>("");
 
   React.useEffect(() => {
@@ -17,7 +19,7 @@ export const Delete = () => {
       setPosts(promptData);
     }
     if (stageIdx === 3) {
-      if (yn === "y") {
+      if (yn === "y" && selected) {
         deletePostAndUpdate(selected.fileName);
       }
 
@@ -27,9 +29,9 @@ export const Delete = () => {
         }, 500);
       }
     }
-  }, [stageIdx]);
+  }, [stageIdx, selected, yn]);
 
-  const onSelectedConfirm = (confirmed: OptionDefault) => {
+  const onSelectedConfirm = (confirmed: DeleteOptionItem) => {
     setSelected(confirmed);
     setStageIdx(2);
   };
@@ -60,7 +62,7 @@ export const Delete = () => {
           onConfirm={onSelectedConfirm}
         />
       )}
-      {stageIdx >= 2 && (
+      {stageIdx >= 2 && selected && (
         <>
           <Newline />
           <Text color="yellowBright">선택한 포스트를 삭제합니다.</Text>

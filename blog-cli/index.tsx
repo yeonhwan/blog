@@ -12,10 +12,8 @@ const Index = () => {
     null,
   );
 
-  if (args.includes("-u")) return <Update />;
-
   useInput(
-    (input, key) => {
+    (input) => {
       if (input === "q") {
         setSelectedOption(CLI_OPTIONS.find((option) => option.step === "exit") || null);
       }
@@ -37,6 +35,8 @@ const Index = () => {
     },
     { isActive: !!!selectedOption },
   );
+
+  if (args.includes("-u")) return <Update />;
 
   return (
     <>

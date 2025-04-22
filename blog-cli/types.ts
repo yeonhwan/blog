@@ -1,8 +1,5 @@
-export type PostMeta = {
-  title: string;
-  excerpt: string;
-  date: string;
-  slug: string;
-  publish: boolean;
-  tags: string[];
-};
+import { PostMeta } from "../app/types";
+
+export type PostMetaWithExtra<T> = { data: PostMeta } & T;
+export type NameWithPath = { fileName: string; postPath: string };
+export type IndexMap = { [key: string]: string | string[] };

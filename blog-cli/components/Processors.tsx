@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { CLIStep } from "./cliOptions";
 import { Create } from "./processes/Create";
 import { Exit } from "./processes/Exit";

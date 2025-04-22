@@ -1,10 +1,13 @@
 import React from "react";
 import { Box, Newline, Text } from "ink";
 import { updatePostsIndexes } from "../../utils/commands";
+import { IndexMap } from "../../types";
 
 // Update all index maps with current map
 export const Update = () => {
-  const [newIndexes, setNewIndexes] = React.useState<any>(null);
+  const [newIndexes, setNewIndexes] = React.useState<{ tags: string[]; slugs: IndexMap } | null>(
+    null,
+  );
 
   React.useEffect(() => {
     const updated = updatePostsIndexes();

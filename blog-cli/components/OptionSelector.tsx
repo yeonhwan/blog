@@ -40,8 +40,10 @@ export default function OptionSelector<T extends OptionDefault>({
   const { selectedColor } = selctorOption;
 
   useEffect(() => {
-    confirmed && onConfirm(confirmed as T);
-  }, [confirmed]);
+    if (confirmed) {
+      onConfirm(confirmed);
+    }
+  }, [confirmed, onConfirm]);
 
   const inputHandler = (input: string, key: Key) => {
     if (key.leftArrow) {

@@ -62,7 +62,7 @@ export default function MultiSelector<T extends OptionDefault>({
     if (confirmed) {
       onConfirm(confirmed);
     }
-  }, [confirmed]);
+  }, [confirmed, onConfirm]);
 
   const inputHandler = (input: string, key: Key) => {
     if (key.leftArrow) {

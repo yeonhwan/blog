@@ -4,13 +4,13 @@ import { getAllPosts } from "../../utils/files";
 import { updatePostsState } from "../../utils/commands";
 import MultiSelector from "../MultiSelector";
 import { OptionDefault } from "../OptionSelector";
-import { PostMeta } from "../../types";
 
 // List posts and unpublish / publish posts
+type ListOptionItem = ReturnType<typeof getAllPosts>[number] & OptionDefault;
 export const List = () => {
   const [stageIdx, setStageIdx] = React.useState(1);
-  const [items, setItems] = React.useState<any>(null);
-  const [selected, setSelected] = React.useState<any>(null);
+  const [items, setItems] = React.useState<ListOptionItem[] | null>(null);
+  const [selected, setSelected] = React.useState<ListOptionItem[] | null>(null);
   const [answer, setAnswer] = React.useState<string>("");
 
   const onConfimHandler = (confirmed: any) => {
@@ -24,21 +24,22 @@ export const List = () => {
       const promptData = allPosts.map((post) => ({ ...post, prompt: post.data.title }));
       setItems(promptData);
     }
-    if (stageIdx === 2 && !selected.length) {
+    if (stageIdx === 2 && !selected?.length) {
       process.exit(0);
     }
-    if (stageIdx === 3) {
-      const postFileNames = selected.map((item: PostMeta) => item.fileName);
+    if (stageIdx === 3 && selected?.length) {
+      const postFileNames = selected?.map((item) => item.fileName);
       if (answer === "p") {
         updatePostsState(postFileNames, true);
+        process.exit(0);
       } else if (answer === "u") {
         updatePostsState(postFileNames, false);
-      }
-      setTimeout(() => {
         process.exit(0);
-      }, 500);
+      } else if (answer === "q") {
+        process.exit(0);
+      }
     }
-  }, [stageIdx]);
+  }, [stageIdx, selected, answer]);
 
   useInput(
     (input) => {
@@ -67,7 +68,7 @@ export const List = () => {
           <Text color="blueBright">Return to confirm</Text>
           {items?.length && (
             <MultiSelector
-              modifier={(item: OptionDefault & PostMeta) => {
+              modifier={(item: ListOptionItem) => {
                 return item.data.publish ? `🟢 ${item.prompt}` : `🔴 ${item.prompt}`;
               }}
               items={items}
@@ -77,13 +78,15 @@ export const List = () => {
           )}
         </>
       )}
-      {stageIdx >= 2 && !!selected.length && (
+      {stageIdx >= 2 && selected?.length && (
         <>
           <Text color="yellowBright">선택한 포스트들에 대해서 일괄적으로</Text>
           <Newline />
           <Box width="50%" borderStyle="round" flexDirection="column">
-            {selected.map((item) => (
-              <Text color="yellowBright">title : {item.data.title}</Text>
+            {selected.map((item, index) => (
+              <Text key={index} color="yellowBright">
+                title : {item.data.title}
+              </Text>
             ))}
           </Box>
           <Text>공개하려면 p </Text>
