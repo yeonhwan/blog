@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 import ThemeSwitch from "./ThemeSwitch";
 import Link from "next/link";
 
-const ROUTE_LIST = ["posts", "about", "snippets"];
+const ROUTE_LIST = ["posts", "about"];
 
 export default function Header() {
   const [isNavOpen, setNavOpen] = useState(false);
