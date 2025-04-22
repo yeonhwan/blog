@@ -8,6 +8,7 @@ import {
   parsePostContent,
   sortPostsByDate,
   filterPostsByTag,
+  filterPostsByPublish,
 } from "@/utils/posts";
 import type { PostData, PostDTo, PostsDTO } from "@/types/posts";
 
@@ -31,13 +32,14 @@ export async function getAllPosts({
   const fileDirents = allDirents.filter((dirent) => isPostFile(dirent));
   const postsData = fileDirents.map((dirent) => parsePostContent(dirent, { excerpt: true }));
   const postsSortedByDate = sortPostsByDate(postsData);
+  const postsFilteredByPublish = filterPostsByPublish(postsSortedByDate);
 
   if (tag) {
-    const filterdPosts = filterPostsByTag(postsSortedByDate, tag);
+    const filterdPosts = filterPostsByTag(postsFilteredByPublish, tag);
     const { total, data } = sliceDataPerPage(page, filterdPosts);
     return { total, data };
   } else {
-    const { total, data } = sliceDataPerPage(page, postsSortedByDate);
+    const { total, data } = sliceDataPerPage(page, postsFilteredByPublish);
     return { total, data };
   }
 }

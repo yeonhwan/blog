@@ -12,6 +12,7 @@ export type PostMeta = {
   excerpt: string;
   date: string;
   slug: string;
+  publish: boolean;
   tags: string[];
 };
 
