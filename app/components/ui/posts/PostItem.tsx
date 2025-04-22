@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PostMeta } from "@/types/posts";
+import { PostMeta } from "@/types";
 import { getDateStringFromDate } from "@/utils/common";
 
 export default function PostItem({ title, excerpt, date, slug, tags }: PostMeta) {

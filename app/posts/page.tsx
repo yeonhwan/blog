@@ -5,10 +5,10 @@ import TagSelector from "@/components/ui/posts/TagSelector";
 import Pagination from "@/components/ui/posts/Pagination";
 
 type PostsProps = {
-  searchParams: {
+  searchParams: Promise<{
     page?: string;
     tag?: string;
-  };
+  }>;
 };
 
 export async function generateMetadata({ searchParams }: PostsProps) {

@@ -10,8 +10,7 @@ import {
   filterPostsByTag,
   filterPostsByPublish,
 } from "@/utils/posts";
-import type { PostData, PostDTo, PostsDTO } from "@/types/posts";
-
+import type { PostData, PostDTO, PostsDTO } from "@/types";
 export async function getAllTags(): Promise<string[]> {
   const __postsDir = getContentPath();
   const __tagPath = path.join(__postsDir, "tag.json");
@@ -48,7 +47,7 @@ export async function getAllPosts({
   }
 }
 
-export async function getPostBySlug({ postSlug }: PostDTo) {
+export async function getPostBySlug({ postSlug }: PostDTO) {
   const __postsDir = getContentPath();
   const __indexPath = path.join(__postsDir, "slug.json");
   const slugMap = JSON.parse(fs.readFileSync(__indexPath).toString());

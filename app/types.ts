@@ -4,7 +4,7 @@ export type PostsDTO = {
   ssg?: boolean;
 };
 
-export type PostDTo = {
+export type PostDTO = {
   postSlug: string;
 };
 

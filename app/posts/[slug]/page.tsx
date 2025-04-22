@@ -6,7 +6,7 @@ import ChevronLeftIcon from "@/assets/chevron_left.svg";
 import Link from "next/link";
 
 type PostProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({ params }: PostProps) {

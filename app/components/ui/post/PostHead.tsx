@@ -1,4 +1,4 @@
-import type { PostMeta } from "@/types/posts";
+import type { PostMeta } from "@/types";
 import { getDateStringFromDate } from "@/utils/common";
 import { PostTag } from "@/components/ui/posts/PostItem";
 

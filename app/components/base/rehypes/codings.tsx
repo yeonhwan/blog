@@ -1,5 +1,5 @@
 "use client";
-import { HTMLAttributes, useState, useEffect, useRef } from "react";
+import { HTMLAttributes, useState, useRef } from "react";
 import { BaseHTMLProps } from "./MarkdownComponents";
 import CircleCheckIcon from "@/assets/circle_check.svg";
 import ClipboardCopyIcon from "@/assets/clipboard_copy.svg";
@@ -7,7 +7,7 @@ import ClipboardCopyIcon from "@/assets/clipboard_copy.svg";
 type PreProps = HTMLAttributes<HTMLPreElement>;
 
 export const Pre = ({ children, className, ...props }: PreProps) => {
-  const [selected, useSelected] = useState(false);
+  const [selected, setSelected] = useState(false);
   const preRef = useRef<HTMLPreElement>(null);
 
   const refSetter = (e: HTMLPreElement) => {
@@ -29,9 +29,9 @@ export const Pre = ({ children, className, ...props }: PreProps) => {
 
     try {
       navigator.clipboard.writeText(content);
-      useSelected(true);
+      setSelected(true);
       setTimeout(() => {
-        useSelected(false);
+        setSelected(false);
       }, 2000);
     } catch {
       window.alert("Copy to clipboard is not supported in this browser.");

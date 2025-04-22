@@ -1,6 +1,6 @@
 import { Dirent } from "node:fs";
-import type { PostData, PostMeta } from "@/types/posts";
-import matter, { GrayMatterOption } from "gray-matter";
+import type { PostData } from "@/types";
+import matter from "gray-matter";
 
 const POST_PER_PAGE = 5;
 

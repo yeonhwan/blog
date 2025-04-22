@@ -5,7 +5,7 @@
  * It also adds a `li-depth-{n}` class for Tailwind styling.
  */
 export default function rehypeAddLiDepth() {
-  return (tree: any) => {
+  return (tree: unknown) => {
     const walk = (node: any, depth: number = 0, parentType: "ul" | "ol" | null = null) => {
       if (node.type === "element") {
         const tag = node.tagName;

@@ -5,8 +5,7 @@ import SunIcon from "@/assets/sun.svg";
 import MoonIcon from "@/assets/moon.svg";
 
 export default function ThemeSwitch() {
-  const { theme, resolvedTheme, setTheme } = useTheme();
-  let currentTheme = theme === "system" ? resolvedTheme : theme;
+  const { setTheme } = useTheme();
 
   const handleThemeSwitch = (theme: string) => {
     setTheme(theme);
