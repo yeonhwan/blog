@@ -3,7 +3,7 @@ import {
   filterPostsByTag,
   sliceDataPerPage,
   sortPostsByDate,
-} from "@/utils/posts";
+} from "@/lib/utils";
 import { describe, expect, test, vi } from "vitest";
 import { PostData } from "root/types";
 
@@ -30,30 +30,30 @@ describe("sliceDataPerPage", () => {
 });
 
 const mockPostData = [
-  { data: { publish: true, tags: ["2"], date: "2024-04-22" } },
-  { data: { publish: true, tags: ["1"], date: "2024-04-21" } },
-  { data: { publish: false, tags: ["2"], date: "2024-04-23" } },
+  { post: { data: { publish: true, tags: ["2"], date: "2024-04-22" } }, fileName: "" },
+  { post: { data: { publish: true, tags: ["1"], date: "2024-04-21" } }, fileName: "" },
+  { post: { data: { publish: false, tags: ["2"], date: "2024-04-23" } }, fileName: "" },
 ] as unknown as PostData[];
 
 describe("filter and sort", () => {
   test("filter data by publish", () => {
     expect(filterPostsByPublish(mockPostData)).toEqual([
-      { data: { publish: true, tags: ["2"], date: "2024-04-22" } },
-      { data: { publish: true, tags: ["1"], date: "2024-04-21" } },
+      { post: { data: { publish: true, tags: ["2"], date: "2024-04-22" } }, fileName: "" },
+      { post: { data: { publish: true, tags: ["1"], date: "2024-04-21" } }, fileName: "" },
     ]);
   });
 
   test("filter data by tag", () => {
     expect(filterPostsByTag(mockPostData, "1")).toEqual([
-      { data: { publish: true, tags: ["1"], date: "2024-04-21" } },
+      { post: { data: { publish: true, tags: ["1"], date: "2024-04-21" } }, fileName: "" },
     ]);
   });
 
   test("filter data by tag", () => {
     expect(sortPostsByDate(mockPostData)).toEqual([
-      { data: { publish: false, tags: ["2"], date: "2024-04-23" } },
-      { data: { publish: true, tags: ["2"], date: "2024-04-22" } },
-      { data: { publish: true, tags: ["1"], date: "2024-04-21" } },
+      { post: { data: { publish: false, tags: ["2"], date: "2024-04-23" } }, fileName: "" },
+      { post: { data: { publish: true, tags: ["2"], date: "2024-04-22" } }, fileName: "" },
+      { post: { data: { publish: true, tags: ["1"], date: "2024-04-21" } }, fileName: "" },
     ]);
   });
 });
