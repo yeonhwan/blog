@@ -8,12 +8,13 @@ import {
   sortPostsByDate,
   filterPostsByTag,
   filterPostsByPublish,
-} from "@/utils/posts";
+} from "@/lib/utils";
 import type { IndexMap, PostData, PostDTO, PostsDTO } from "root/types";
 
 export async function getAllTags(): Promise<string[]> {
   const __postsDir = getContentPath();
   const __indexPath = path.join(__postsDir, "index.json");
+
   const { tags } = JSON.parse(fs.readFileSync(__indexPath).toString());
 
   return tags;

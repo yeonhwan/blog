@@ -1,5 +1,5 @@
-import type { PostMeta } from "@/types";
-import { getDateStringFromDate } from "@/utils/common";
+import type { PostMeta } from "root/types";
+import { getDateStringFromDate } from "@/lib/utils";
 import { PostTag } from "@/components/ui/posts/PostItem";
 
 export default function PostHead({ title, date, tags }: PostMeta) {

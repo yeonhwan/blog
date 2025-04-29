@@ -11,7 +11,7 @@ export const useVisibilityTrigger = <T extends HTMLElement>(
 ) => {
   const targetRef = useRef<T | null>(null);
   const prevVisibility = useRef<boolean>(false);
-  const { onVisible, onHidden, ...options } = opts;
+  const { onVisible, onHidden } = opts;
 
   const intersectionCallback: IntersectionObserverCallback = (entries) => {
     entries.forEach((entry) => {
