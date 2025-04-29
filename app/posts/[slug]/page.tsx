@@ -47,7 +47,7 @@ export default async function Post({ params }: PostProps) {
   } = data;
 
   return (
-    <main className="flex flex-col gap-4">
+    <main className="flex flex-col gap-4 min-h-mb-main-y tablet:min-h-tb-main-y">
       <section>
         <PostHead {...meta} />
         <MarkdownRenderer source={content} />
