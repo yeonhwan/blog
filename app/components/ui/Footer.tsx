@@ -3,7 +3,7 @@ import GithubIcon from "@/assets/github.svg";
 
 export default function Footer() {
   return (
-    <footer className="w-full flex flex-col justify-center items-center min-h-footer-height bg-clean-white dark:bg-dark-ash mt-footer-margin font-light text-xs pt-4 pb-6">
+    <footer className="w-full flex flex-col justify-center items-center min-h-footer-height bg-clean-white dark:bg-dark-ash mt-footer-margin font-light text-xs">
       <Link
         className="flex justify-center items-center gap-1"
         href="https://github.com/yeonhwan/blog"

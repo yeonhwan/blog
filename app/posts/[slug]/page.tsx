@@ -14,7 +14,9 @@ export async function generateMetadata({ params }: PostProps) {
   const decodedSlug = decodeURIComponent(slug);
   const post = await getPostBySlug({ postSlug: decodedSlug });
   if (!post) notFound();
-  const { data } = post;
+  const {
+    post: { data },
+  } = post;
 
   return {
     title: `YH_Blog :: ${data.title}`,
@@ -29,23 +31,25 @@ export async function generateMetadata({ params }: PostProps) {
 }
 
 export async function generateStaticParams() {
-  const posts = await getAllPosts({ ssg: true });
-  return posts.data.map((post) => ({
-    slug: post.data.slug,
+  const { data } = await getAllPosts({ ssg: true });
+  return data.map((item) => ({
+    slug: item.post.data.slug,
   }));
 }
 
 export default async function Post({ params }: PostProps) {
   const { slug } = await params;
   const decodedSlug = decodeURIComponent(slug);
-  const post = await getPostBySlug({ postSlug: decodedSlug });
-  if (!post) notFound();
-  const { data, content } = post;
+  const data = await getPostBySlug({ postSlug: decodedSlug });
+  if (!data) notFound();
+  const {
+    post: { data: meta, content },
+  } = data;
 
   return (
     <main className="flex flex-col gap-4">
       <section>
-        <PostHead {...data} />
+        <PostHead {...meta} />
         <MarkdownRenderer source={content} />
         <nav className="flex w-full items-center border-t border-dashed border-t-sub-gray/30 mt-24 pt-5 laptop:mt-40 laptop:pt-10 justify-between">
           <Link href="/posts" className="flex items-center gap-1 laptop:text-dt-base">

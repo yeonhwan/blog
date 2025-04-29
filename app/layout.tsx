@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <body
-        className={`${FiraCode.variable} ${NbgKR.variable} antialiased bg-clean-white dark:bg-dark-ash text-deep-gray dark:text-text-white tablet:mx-[12.5%] laptop:mx-[20%] desktop:mx-[25%]`}
+        className={`${FiraCode.variable} ${NbgKR.variable} antialiased bg-clean-white dark:bg-dark-ash text-deep-gray dark:text-text-white tablet:mx-[12.5%] laptop:mx-[20%] desktop:mx-[25%] min-h-screen`}
       >
         <ThemeProvider>
           <Header />

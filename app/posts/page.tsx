@@ -53,14 +53,14 @@ export default async function Posts({ searchParams }: PostsProps) {
   const tags = await getAllTags();
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-mb-main-y tablet:min-h-tb-main-y">
       <PageTitle title="Posts" />
       <div className="flex w-full justify-end mb-10">
         <TagSelector key={tag} current={tag} data={tags} />
       </div>
       <ul className="flex flex-col gap-6">
-        {posts.map(({ data }, idx) => (
-          <PostItem key={data.slug} {...data} />
+        {posts.map(({ post }) => (
+          <PostItem key={post.data.slug} {...post.data} />
         ))}
       </ul>
       <footer className="w-full flex justify-center my-10">

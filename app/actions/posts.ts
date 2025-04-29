@@ -1,23 +1,22 @@
 "use server";
 import fs from "fs";
 import path from "path";
-import { getContentPath } from "@/utils/getContentPath";
+import matter from "gray-matter";
+import { getContentPath, isMarkdownFile } from "root/lib/utils";
 import {
   sliceDataPerPage,
-  isPostFile,
-  parsePostContent,
   sortPostsByDate,
   filterPostsByTag,
   filterPostsByPublish,
 } from "@/utils/posts";
-import type { PostData, PostDTO, PostsDTO } from "root/types";
+import type { IndexMap, PostData, PostDTO, PostsDTO } from "root/types";
 
 export async function getAllTags(): Promise<string[]> {
   const __postsDir = getContentPath();
-  const __tagPath = path.join(__postsDir, "tag.json");
-  const tagMap = JSON.parse(fs.readFileSync(__tagPath).toString());
+  const __indexPath = path.join(__postsDir, "index.json");
+  const { tags } = JSON.parse(fs.readFileSync(__indexPath).toString());
 
-  return tagMap.data;
+  return tags;
 }
 
 export async function getAllPosts({
@@ -30,8 +29,11 @@ export async function getAllPosts({
     recursive: true,
     withFileTypes: true,
   });
-  const fileDirents = allDirents.filter((dirent) => isPostFile(dirent));
-  const postsData = fileDirents.map((dirent) => parsePostContent(dirent, { excerpt: true }));
+  const postEntries = allDirents.filter((dirent) => isMarkdownFile(dirent));
+  const postsData = postEntries.map(({ parentPath, name }) => ({
+    post: matter.read(`${parentPath}/${name}`, { excerpt: true }),
+    fileName: name,
+  })) as PostData[];
 
   if (ssg) return { data: postsData, total: postsData.length };
 
@@ -48,16 +50,17 @@ export async function getAllPosts({
   }
 }
 
-export async function getPostBySlug({ postSlug }: PostDTO) {
+export async function getPostBySlug({ postSlug }: PostDTO): Promise<PostData | null> {
   const __postsDir = getContentPath();
-  const __indexPath = path.join(__postsDir, "slug.json");
-  const slugMap = JSON.parse(fs.readFileSync(__indexPath).toString());
-  const postFilename = slugMap[postSlug];
+  const __indexPath = path.join(__postsDir, "index.json");
+  const { slugs } = JSON.parse(fs.readFileSync(__indexPath).toString()) as IndexMap;
+  const isFound = slugs.includes(postSlug);
 
   // if it is wrong slug, return null to redirect
-  if (postFilename === undefined) return null;
+  if (!isFound) return null;
 
-  const __postPath = path.join(__postsDir, slugMap[postSlug]);
-  const post = parsePostContent(__postPath);
-  return post;
+  const fileName = `${postSlug}.md`;
+  const __postPath = path.join(__postsDir, fileName);
+  const post = matter.read(__postPath);
+  return { post, fileName } as PostData;
 }
