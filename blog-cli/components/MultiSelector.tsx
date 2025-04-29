@@ -38,18 +38,19 @@ export default function MultiSelector<T extends OptionDefault>({
   const [curIdx, setCurIdx] = useState(0);
   const [selected, setSelected] = useState<number[]>([]);
   const [confirmed, setConfirmed] = useState<T[] | null>(null);
-  const curSelectedOption = curIdx;
 
   const { selectedColor, hoverColor } = selctorOption;
   const boxProps = { ...defaultSelectorOption, ...selctorOption };
 
   const selectHandler = () => {
     setSelected((prevSelected) => {
-      const hasAlreadySelected = prevSelected.find((item) => item === curSelectedOption);
+      const hasAlreadySelected = prevSelected.some((item) => {
+        return item === curIdx;
+      });
       if (hasAlreadySelected) {
-        return prevSelected.filter((item) => item !== curSelectedOption);
+        return prevSelected.filter((item) => item !== curIdx);
       } else {
-        return [...prevSelected, curSelectedOption];
+        return [...prevSelected, curIdx];
       }
     });
   };
@@ -62,36 +63,30 @@ export default function MultiSelector<T extends OptionDefault>({
     if (confirmed) {
       onConfirm(confirmed);
     }
-  }, [confirmed, onConfirm]);
+  }, [confirmed]);
 
   const inputHandler = (input: string, key: Key) => {
     if (key.leftArrow) {
-      // Left arrow key pressed
       setCurIdx((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
     }
 
     if (key.rightArrow) {
-      // Right arrow key pressed
       setCurIdx((prevIndex) => (prevIndex < items.length - 1 ? prevIndex + 1 : prevIndex));
     }
 
     if (key.upArrow) {
-      // Up arrow key pressed
       setCurIdx((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
     }
 
     if (key.downArrow) {
-      // Down arrow key pressed
       setCurIdx((prevIndex) => (prevIndex < items.length - 1 ? prevIndex + 1 : prevIndex));
     }
 
     if (key.tab) {
-      // Select an option
       selectHandler();
     }
 
     if (key.return) {
-      // Enter key pressed
       confirmHandler();
     }
   };
@@ -101,7 +96,7 @@ export default function MultiSelector<T extends OptionDefault>({
   return (
     <Box {...boxProps}>
       {items.map((item: T, index: number) => {
-        const isSelected = selected.find((item) => item === index);
+        const isSelected = selected.some((item) => item === index);
         const isHovered = curIdx === index;
         const backgroundColor = isSelected
           ? selectedColor

@@ -43,7 +43,7 @@ export default function OptionSelector<T extends OptionDefault>({
     if (confirmed) {
       onConfirm(confirmed);
     }
-  }, [confirmed, onConfirm]);
+  }, [confirmed]);
 
   const inputHandler = (input: string, key: Key) => {
     if (key.leftArrow) {

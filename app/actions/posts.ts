@@ -10,7 +10,8 @@ import {
   filterPostsByTag,
   filterPostsByPublish,
 } from "@/utils/posts";
-import type { PostData, PostDTO, PostsDTO } from "@/types";
+import type { PostData, PostDTO, PostsDTO } from "root/types";
+
 export async function getAllTags(): Promise<string[]> {
   const __postsDir = getContentPath();
   const __tagPath = path.join(__postsDir, "tag.json");

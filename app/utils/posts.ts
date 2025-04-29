@@ -1,5 +1,5 @@
 import { Dirent } from "node:fs";
-import type { PostData } from "@/types";
+import type { PostData } from "root/types";
 import matter from "gray-matter";
 
 const POST_PER_PAGE = 5;
@@ -11,8 +11,10 @@ export const isPostFile = (dirent: Dirent) => {
 export const sliceDataPerPage = <T>(page: number, data: T[]): { data: T[]; total: number } => {
   const start = (page - 1) * POST_PER_PAGE;
   const end = start + POST_PER_PAGE;
+  const total = Math.ceil(data.length / POST_PER_PAGE);
+  if (page < 0 || page > total) throw new Error("Page out of range");
   return {
-    total: Math.ceil(data.length / POST_PER_PAGE),
+    total,
     data: data.slice(start, end),
   };
 };

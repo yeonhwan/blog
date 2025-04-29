@@ -1,26 +1,27 @@
 import React from "react";
 import { Box, Newline, Text } from "ink";
-import { updatePostsIndexes } from "../../utils/commands";
-import { IndexMap } from "../../types";
+import { updateIndex } from "root/blog-cli/lib/actions";
+import { IndexMap } from "root/types";
+import { getAllPosts } from "root/blog-cli/lib/fetch";
 
 // Update all index maps with current map
 export const Update = () => {
-  const [newIndexes, setNewIndexes] = React.useState<{ tags: string[]; slugs: IndexMap } | null>(
-    null,
-  );
+  const [newIndexes, setNewIndexes] = React.useState<IndexMap | null>(null);
 
   React.useEffect(() => {
-    const updated = updatePostsIndexes();
-    setNewIndexes(updated);
-    setTimeout(() => {
-      process.exit(0);
-    }, 500);
+    const allPosts = getAllPosts();
+    const { data, success } = updateIndex(allPosts);
+    if (success) {
+      setNewIndexes(data);
+    } else {
+      process.exit(1);
+    }
   }, []);
 
   return (
-    <>
-      <Newline />
+    <Box flexDirection="column">
       <Text color="greenBright">인덱스 데이터를 업데이트 합니다.</Text>
+      <Newline />
       {newIndexes && (
         <>
           <Text color="greenBright">업데이트가 완료 되었습니다.</Text>
@@ -37,6 +38,6 @@ export const Update = () => {
         </>
       )}
       <Newline />
-    </>
+    </Box>
   );
 };

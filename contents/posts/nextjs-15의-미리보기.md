@@ -1,15 +1,14 @@
 ---
-title: 666의 무서운 진실
-date: 2024-06-06T00:00:00.000Z
+title: Next.js 15의 미리보기
+date: 2023-04-06T00:00:00.000Z
 tags:
-  - Diary
-  - Scary
-slug: 666의-무서운-진실
-excerpt: 666의 무서운 진실에 대한 포스팅입니다.
-publish: false
+  - Next
+  - React
+publish: true
+slug: nextjs-15의-미리보기
 ---
 
-# First Heading
+# Next JS 신기능 살펴보기
 
 ## Second Heading
 

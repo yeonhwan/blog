@@ -1,14 +1,16 @@
+// ⚠️ to be integrated with operation and to be renamed into lib
 import fs from "fs";
 import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { IndexMap } from "../types";
 
-const getContentPath = () => {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
-  return path.join(__dirname, "..", "..", "contents", "posts");
-};
+// use upper level lib
+// const getContentPath = () => {
+//   const __filename = fileURLToPath(import.meta.url);
+//   const __dirname = dirname(__filename);
+//   return path.join(__dirname, "..", "..", "contents", "posts");
+// };
 
 const createNewSlugFromTitle = (title: string) => {
   const slug = title
@@ -37,7 +39,8 @@ const getTagMap = (): IndexMap => {
 };
 
 const createFilenameFromTitle = (title: string) => {
-  return title.replace(/\s+/g, "_").replace(/\./g, "");
+  const base = title.replace(/\s+/g, "_").replace(/\./g, "");
+  return `${base}.md`;
 };
 
 const revalidateSlugWithSlugMap = (slug: string, slugMap: any) => {

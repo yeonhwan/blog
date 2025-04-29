@@ -1,7 +1,8 @@
 ---
 title: React 19의 새로운 기능
 date: 2024-04-19T00:00:00.000Z
-tags: ["React"]
+tags:
+  - React
 slug: react-19의-새로운-기능
 publish: true
 excerpt: React 19의 새로운 기능에 대한 소개
