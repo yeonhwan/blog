@@ -46,7 +46,7 @@ export default function TagSelector({
         <button
           ref={targetRef}
           aria-expanded={open}
-          className="flex w-fit min-w-30 justify-between items-center border border-sub-gray/20 px-2 py-1 rounded-sm"
+          className="flex w-fit min-w-30 justify-between items-center border border-sub-gray/20 px-2 py-1 rounded-sm hover:cursor-pointer"
         >
           {value || "전체"}
           <TagIcon className="opacity-50 w-4 h-4" />
@@ -63,7 +63,7 @@ export default function TagSelector({
                   className={cn(
                     value === tag.value
                       ? "text-neon-blue-100 dark:text-neon-green-100"
-                      : "text-deep-gray dark:text-text-white",
+                      : "text-deep-gray dark:text-text-white hover:cursor-pointer",
                   )}
                   key={tag.value}
                   value={tag.value}

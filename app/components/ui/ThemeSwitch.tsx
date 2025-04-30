@@ -15,12 +15,12 @@ export default function ThemeSwitch() {
     <div>
       <SunIcon
         onClick={() => handleThemeSwitch("light")}
-        className="w-mb-icon-size h-mb-icon-size stroke-neon-lime dark:block hidden"
+        className="w-mb-icon-size h-mb-icon-size stroke-neon-lime dark:block hidden hover:cursor-pointer"
       />
 
       <MoonIcon
         onClick={() => handleThemeSwitch("dark")}
-        className="w-mb-icon-size h-mb-icon-size block dark:hidden stroke-neon-blue-300"
+        className="w-mb-icon-size h-mb-icon-size block dark:hidden stroke-neon-blue-300 hover:cursor-pointer"
       />
     </div>
   );
