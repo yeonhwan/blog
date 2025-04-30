@@ -5,8 +5,8 @@
 
 @theme {
   /* Fonts */
-  --font-fira: var(--font-fira);
-  --font-nbg: var(--font-nbg);
+  --font-mono: var(--ibm-mono);
+  --font-sans: var(--ibm-sans);
 
   /* Palette */
 

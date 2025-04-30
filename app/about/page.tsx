@@ -44,7 +44,7 @@ export default function About() {
           <i className="rounded-full w-2 h-2 bg-yellow-500"></i>
           <i className="rounded-full w-2 h-2 bg-green-500"></i>
         </div>
-        <div className="w-fit font-fira text-mb-sub laptop:text-dt-base flex justify-between items-center gap-2 my-4">
+        <div className="w-fit font-mono text-mb-sub laptop:text-dt-base flex justify-between items-center gap-2 my-4">
           <p className="text-neon-blue-100 dark:text-neon-green-200 font-bold">yeonhwan@mac</p>
           <p className="text-neon-blue-100 dark:text-neon-green-200 font-bold">$</p>
           <p>whoami</p>
@@ -67,7 +67,7 @@ export default function About() {
           width={2071}
           height={1089}
         />
-        <ul data-name="content" className="w-fit font-fira flex flex-col gap-2 my-4">
+        <ul data-name="content" className="w-fit font-mono flex flex-col gap-2 my-4">
           <li className="w-fit text-neon-blue-100 dark:text-neon-green-200 text-sm laptop:text-base font-semibold border-b border-sub-gray border-dashed pb-1">
             yeonhwan-park@seoul
           </li>

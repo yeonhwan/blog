@@ -24,7 +24,7 @@ export default function Header() {
       className="w-full h-mb-header-height tablet:h-tb-header-height flex justify-between sticky top-0 items-center bg-clean-white dark:bg-dark-ash py-mb-y-gutter z-50 px-mb-x-gutter"
     >
       <Link href="/posts" className="flex items-center gap-1">
-        <p className="text-mb-h2 laptop:text-dt-h1 text-neon-blue-100 dark:text-neon-green-100 font-fira font-bold">
+        <p className="text-mb-h2 laptop:text-dt-h1 text-neon-blue-100 dark:text-neon-green-100 font-mono font-bold">
           YH
         </p>
         <TerminalIcon className="w-mb-icon-size h-mb-icon-size laptop:w-dt-icon-size laptop:h-dt-icon-size fill-neon-blue-100 dark:fill-neon-green-100 scale-80" />

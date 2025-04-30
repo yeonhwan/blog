@@ -67,7 +67,7 @@ figure[data-rehype-pretty-code-figure=""] {
   figcaption[data-rehype-pretty-code-title=""] {
     /* background-color: #2d353b; */
     font-size: 0.8rem;
-    font-family: var(--font-fira);
+    font-family: var(--font-ibm-mono);
     width: fit-content;
     padding: 0.25rem 0.5rem;
     border-radius: 0.1rem;

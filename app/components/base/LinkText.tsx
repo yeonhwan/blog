@@ -13,7 +13,7 @@ export default function LinkText({
   title: string;
   onClick?: () => void;
 }) {
-  const base = ["text-mb-h1", "text-neon-green-100", "font-fira", "font-bold", "capitalize"];
+  const base = ["text-mb-h1", "text-neon-green-100", "font-mono", "font-bold", "capitalize"];
 
   const linkStyle = cva(base, {
     variants: {
