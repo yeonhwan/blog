@@ -5,7 +5,7 @@ type UlProps = HTMLAttributes<HTMLUListElement>;
 export const UL = ({ children, ...props }: UlProps) => {
   return (
     <ul
-      className="text-mb-content-p laptop:text-dt-content-p text-deep-gray dark:text-text-white pl-2 my-2"
+      className="text-mb-content-p laptop:text-dt-content-p text-deep-gray dark:text-text-white pl-2 my-[2em]"
       {...props}
     >
       {children}
@@ -16,7 +16,7 @@ export const UL = ({ children, ...props }: UlProps) => {
 export const OL = ({ children, ...props }: UlProps) => {
   return (
     <ol
-      className="text-mb-content-p laptop:text-dt-content-p text-deep-gray dark:text-text-white pl-2 my-2"
+      className="text-mb-content-p laptop:text-dt-content-p text-deep-gray dark:text-text-white pl-2 my-[2em]"
       {...props}
     >
       {children}
