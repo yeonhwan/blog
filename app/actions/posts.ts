@@ -25,16 +25,7 @@ export async function getAllPosts({
   tag,
   ssg = false,
 }: PostsDTO): Promise<{ data: PostData[]; total: number }> {
-  const __postsDir = getContentPath();
-  const allDirents = fs.readdirSync(__postsDir, {
-    recursive: true,
-    withFileTypes: true,
-  });
-  const postEntries = allDirents.filter((dirent) => isMarkdownFile(dirent));
-  const postsData = postEntries.map(({ parentPath, name }) => ({
-    post: matter.read(`${parentPath}/${name}`, { excerpt: true }),
-    fileName: name,
-  })) as PostData[];
+  const postsData = fetchAllPostsFromFS();
 
   if (ssg) return { data: postsData, total: postsData.length };
 
@@ -52,16 +43,34 @@ export async function getAllPosts({
 }
 
 export async function getPostBySlug({ postSlug }: PostDTO): Promise<PostData | null> {
+  return fetchPostFromFS(postSlug) as PostData;
+}
+
+const fetchAllPostsFromFS = () => {
+  const __postsDir = getContentPath();
+  const allDirents = fs.readdirSync(__postsDir, {
+    recursive: true,
+    withFileTypes: true,
+  });
+  const postEntries = allDirents.filter((dirent) => isMarkdownFile(dirent));
+  const postsData = postEntries.map(({ parentPath, name }) => ({
+    post: matter.read(`${parentPath}/${name}`, { excerpt: true }),
+    fileName: name,
+  })) as PostData[];
+  return postsData;
+};
+
+const fetchPostFromFS = (slug: string) => {
   const __postsDir = getContentPath();
   const __indexPath = path.join(__postsDir, "index.json");
   const { slugs } = JSON.parse(fs.readFileSync(__indexPath).toString()) as IndexMap;
-  const isFound = slugs.includes(postSlug);
+  const isFound = slugs.includes(slug);
 
   // if it is wrong slug, return null to redirect
   if (!isFound) return null;
 
-  const fileName = `${postSlug}.md`;
+  const fileName = `${slug}.md`;
   const __postPath = path.join(__postsDir, fileName);
   const post = matter.read(__postPath);
-  return { post, fileName } as PostData;
-}
+  return { post, fileName: __filename };
+};
