@@ -13,8 +13,6 @@
     "postbuild": "next-sitemap --config next-sitemap.config.cjs",
     "start": "next start",
     "lint": "next lint",
-    "delete-contents": "",
-    "update-contents": "node ./scripts/main.js",
     "prepare": "husky",
     "cli": "pnpm --filter scripts run cli",
     "test": "vitest"
