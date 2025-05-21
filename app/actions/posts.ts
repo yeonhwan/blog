@@ -12,7 +12,7 @@ import {
 import type { IndexMap, PostData, PostDTO, PostsDTO } from "root/types";
 
 export async function getAllTags(): Promise<string[]> {
-  const __postsDir = getContentPath();
+  const __postsDir = path.join(process.cwd(), "contents", "posts");
   const __indexPath = path.join(__postsDir, "index.json");
 
   const { tags } = JSON.parse(fs.readFileSync(__indexPath).toString());
@@ -47,7 +47,7 @@ export async function getPostBySlug({ postSlug }: PostDTO): Promise<PostData | n
 }
 
 const fetchAllPostsFromFS = () => {
-  const __postsDir = getContentPath();
+  const __postsDir = path.join(process.cwd(), "contents", "posts");
   const allDirents = fs.readdirSync(__postsDir, {
     recursive: true,
     withFileTypes: true,
@@ -61,7 +61,7 @@ const fetchAllPostsFromFS = () => {
 };
 
 const fetchPostFromFS = (slug: string) => {
-  const __postsDir = getContentPath();
+  const __postsDir = path.join(process.cwd(), "contents", "posts");
   const __indexPath = path.join(__postsDir, "index.json");
   const { slugs } = JSON.parse(fs.readFileSync(__indexPath).toString()) as IndexMap;
   const isFound = slugs.includes(slug);
