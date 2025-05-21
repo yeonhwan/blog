@@ -1,7 +1,7 @@
 import { expect, describe, test } from "vitest";
 import {
   getPostPath,
-  genNewSlugFromTitle,
+  genNewSlugFromFilename,
   validateSlug,
   modifyPostMeta,
   genNewPostMeta,
@@ -13,25 +13,29 @@ import { templatePost, templatePostData, templatePostData2 } from "./fixtures/te
 describe("blog-cli Builder tests", () => {
   describe("Slug generation", () => {
     test("All english should be in lower-case", () => {
-      expect(genNewSlugFromTitle("Hello World")).toEqual("hello-world");
+      expect(genNewSlugFromFilename("Hello World")).toEqual("hello-world");
     });
 
     test("All white space should be transformed into -", () => {
-      expect(genNewSlugFromTitle("Hello World")).toEqual("hello-world");
+      expect(genNewSlugFromFilename("Hello World")).toEqual("hello-world");
     });
 
     test("Only allow korean, number, english,", () => {
-      expect(genNewSlugFromTitle("!@188  ^&*% HI! 안녕하세요")).toEqual("188-hi-안녕하세요");
+      expect(genNewSlugFromFilename("!@188  ^&*% HI! 안녕하세요")).toEqual("188-hi-안녕하세요");
+    });
+
+    test("Remove extension and convert", () => {
+      expect(genNewSlugFromFilename("테스트-마크다운.md")).toEqual("테스트-마크다운");
     });
 
     test("Throw when slug generation return empty slug", () => {
-      expect(() => genNewSlugFromTitle("!@^&*%!|==.")).toThrowError(
+      expect(() => genNewSlugFromFilename("!@^&*%!|==.")).toThrowError(
         "Slug is empty, please check the title again",
       );
     });
 
     test("Multiple hyphens become single", () => {
-      expect(genNewSlugFromTitle("He------llo")).toEqual("he-llo");
+      expect(genNewSlugFromFilename("He------llo")).toEqual("he-llo");
     });
 
     test("Correctly revalidate slug with slug map", () => {
@@ -86,7 +90,7 @@ describe("blog-cli Builder tests", () => {
     genNewPostMetaTest(
       "genNewPostMeta should return new template meta object",
       ({ title, date, example }) => {
-        const slug = genNewSlugFromTitle(title);
+        const slug = genNewSlugFromFilename(title);
 
         expect(genNewPostMeta(title, slug, date)).toEqual(example);
       },

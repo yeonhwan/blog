@@ -8,8 +8,9 @@ const getPostPath = (base: string, postName: string): string => {
 };
 
 // generation
-const genNewSlugFromTitle = (title: string): string => {
-  const slug = title
+const genNewSlugFromFilename = (fileName: string): string => {
+  fileName = fileName.split(".")[0];
+  const slug = fileName
     .toLowerCase()
     .replace(/\s+/g, "-")
     // 한글, 영어, 숫자, 하이픈 허용
@@ -57,8 +58,10 @@ const genNewIndex = (postDatas: PostData[]) => {
 
   for (const post of postDatas) {
     const { tags, publish, slug } = post.post.data;
-    validateSlug(slug, newSlugs);
-    newSlugs.push(slug);
+    const newSlug = genNewSlugFromFilename(post.fileName);
+    const target = slug !== newSlug ? newSlug : slug;
+    validateSlug(target, newSlugs);
+    newSlugs.push(target);
 
     for (const tag of tags) {
       if (!publish) continue;
@@ -72,7 +75,7 @@ const genNewIndex = (postDatas: PostData[]) => {
 export {
   getPostPath,
   validateSlug,
-  genNewSlugFromTitle,
+  genNewSlugFromFilename,
   modifyPostMeta,
   genNewPostMeta,
   genNewPost,

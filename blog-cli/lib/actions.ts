@@ -9,7 +9,7 @@ import {
   genNewIndex,
   genNewPost,
   genNewPostMeta,
-  genNewSlugFromTitle,
+  genNewSlugFromFilename,
   getPostPath,
   modifyPostMeta,
   validateSlug,
@@ -18,7 +18,7 @@ import { getIndex } from "./fetch";
 
 const createPost = (title: string, date: Date): Result<PostData> => {
   try {
-    const slug = genNewSlugFromTitle(title);
+    const slug = genNewSlugFromFilename(title);
     const { slugs } = getIndex();
     validateSlug(slug, slugs);
     const newPostMeta = genNewPostMeta(title, slug, date);
