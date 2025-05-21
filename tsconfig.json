@@ -32,7 +32,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "__tests__/__mocks__/fs.cjs"
+    "__tests__/__mocks__/fs.cjs",
+    "next-sitemap.config.cjs"
   ],
   "exclude": ["node_modules", "./contents"]
 }
