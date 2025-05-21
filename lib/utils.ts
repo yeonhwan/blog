@@ -17,9 +17,12 @@ const isMarkdownFile = (dirent: Dirent) => {
 
 // resolve any path entry based on project root
 const resolvePathFromEntry = (entry: string | string[] | Dirent) => {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dir = __path.dirname(__filename);
-  const root = __path.join(__dir, "..");
+  let root = process.cwd();
+
+  if(__path.basename(root) === 'blog-cli') {
+    const __dirname = __path.dirname(fileURLToPath(import.meta.url))
+    root = __path.resolve(__dirname, "..");
+  }
 
   if (!entry) throw new Error("Path is empty");
   if (entry instanceof Dirent) {
@@ -37,10 +40,7 @@ const resolvePathFromEntry = (entry: string | string[] | Dirent) => {
 const getContentPath = () => {
   if (typeof window !== "undefined")
     throw new Error("getContentPath can only be used in server context");
-
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = __path.dirname(__filename);
-  return resolvePathFromEntry([__dirname, "..", "contents", "posts"]);
+  return resolvePathFromEntry(["contents", "posts"]);
 };
 
 export { resolvePathFromEntry, getContentPath, isMarkdownFile, getBaseName };
