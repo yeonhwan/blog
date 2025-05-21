@@ -1,12 +1,11 @@
 ---
-title: Real Markdown Test Post
+title: Markdown Test Post
 date: 2024-12-24T00:00:00.000Z
 tags:
   - Markdown
   - 테스트
-excerpt: 진짜 마크다운 테스트용
-publish: true
-slug: real-markdown-test-post
+publish: false
+slug: markdown-test-post
 ---
 
 # H1
@@ -147,7 +146,7 @@ You can do fun thing with the command `curl -X POST https://xbin.io/` to say hi 
 
 ## Inner Image
 
-![alt Test Image](/contents/example.jpg)
+![alt Test Image](/contents/example.webp)
 
 ## Table
 
