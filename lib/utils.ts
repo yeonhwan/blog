@@ -17,12 +17,8 @@ const isMarkdownFile = (dirent: Dirent) => {
 
 // resolve any path entry based on project root
 const resolvePathFromEntry = (entry: string | string[] | Dirent) => {
-  let root = process.cwd();
-
-  if(__path.basename(root) === 'blog-cli') {
-    const __dirname = __path.dirname(fileURLToPath(import.meta.url))
-    root = __path.resolve(__dirname, "..");
-  }
+  const __dirname = __path.dirname(fileURLToPath(import.meta.url))
+  const root = __path.resolve(__dirname, "..");
 
   if (!entry) throw new Error("Path is empty");
   if (entry instanceof Dirent) {
