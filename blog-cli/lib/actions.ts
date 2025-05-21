@@ -2,8 +2,7 @@
 
 import matter from "gray-matter";
 import { PostData, PostMeta, IndexMap, Result } from "root/types";
-import { resolvePathFromEntry, getContentPath } from "root/lib/utils";
-import { deleteFile, writeOrCreateFile } from "./io";
+import { deleteFile, writeOrCreateFile, resolvePathFromEntry, getContentPath } from "./io";
 
 import {
   genNewIndex,

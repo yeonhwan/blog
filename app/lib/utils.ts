@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { extendTailwindMerge } from "tailwind-merge";
 import type { PostData } from "root/types";
+import path from "path";
 
 const POST_PER_PAGE = 5;
 
@@ -31,6 +32,11 @@ export const sortPostsByDate = (data: PostData[]): PostData[] => {
 
 export const getDateStringFromDate = (date: Date) => {
   return new Date(date).toLocaleDateString("ko-KR");
+};
+
+export const getContentPath = () => {
+  const root = process.cwd();
+  return path.resolve(root, "contents", "posts");
 };
 
 // ---

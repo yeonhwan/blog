@@ -1,9 +1,30 @@
 import { Post } from "root/types";
 import fs, { Dirent } from "fs";
 import matter from "gray-matter";
-import { resolvePathFromEntry } from "root/lib/utils";
+import __path from "path";
+import { fileURLToPath } from "url";
 
 type Entry = string | string[] | Dirent;
+
+const resolvePathFromEntry = (entry: string | string[] | fs.Dirent) => {
+  const __dirname = __path.dirname(fileURLToPath(import.meta.url));
+  const root = __path.resolve(__dirname, "..", "..");
+  if (!entry) throw new Error("Path is empty");
+  if (entry instanceof fs.Dirent) {
+    // dirent has absolute path
+    return __path.join(entry.parentPath, entry.name);
+  } else if (Array.isArray(entry)) {
+    return __path.resolve(root, ...entry);
+  } else if (typeof entry === "string") {
+    return __path.resolve(root, entry);
+  } else {
+    throw new Error("Unsupported entry type");
+  }
+};
+
+const getContentPath = () => {
+  return resolvePathFromEntry(["contents", "posts"]);
+};
 
 const readFromDir = (path: string) => {
   if (!path) throw new Error("Path is empty");
@@ -48,4 +69,12 @@ const readWithMatter = (entry: Dirent | string, opts?: ParsingOption) => {
   return data as Post;
 };
 
-export { readFromDir, readFromFile, writeOrCreateFile, deleteFile, readWithMatter };
+export {
+  readFromDir,
+  readFromFile,
+  writeOrCreateFile,
+  deleteFile,
+  readWithMatter,
+  getContentPath,
+  resolvePathFromEntry,
+};

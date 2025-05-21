@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 import { Compiler } from "webpack";
-import { getContentPath } from "./lib/utils";
+import { getContentPath } from "./app/lib/utils";
 
 const nextConfig: NextConfig = {
   /* config options here */

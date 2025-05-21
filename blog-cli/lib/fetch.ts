@@ -1,7 +1,13 @@
-import { resolvePathFromEntry, getContentPath, isMarkdownFile } from "root/lib/utils";
+import { isMarkdownFile } from "root/lib/utils";
 import { IndexMap, PostData } from "root/types";
 import { getPostPath } from "./builder";
-import { readFromFile, readFromDir, readWithMatter } from "./io";
+import {
+  resolvePathFromEntry,
+  getContentPath,
+  readFromFile,
+  readFromDir,
+  readWithMatter,
+} from "./io";
 
 function getIndex(): IndexMap {
   const path = resolvePathFromEntry([getContentPath(), "index.json"]);

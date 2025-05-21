@@ -1,4 +1,4 @@
-import { resolvePathFromEntry } from "root/lib/utils";
+import { resolvePathFromEntry } from "./io";
 import { Post, PostData, PostMeta } from "root/types";
 
 // path utils

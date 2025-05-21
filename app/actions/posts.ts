@@ -2,7 +2,8 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { getContentPath, isMarkdownFile } from "root/lib/utils";
+import { isMarkdownFile } from "root/lib/utils";
+import { getContentPath } from "@/lib/utils";
 import {
   sliceDataPerPage,
   sortPostsByDate,
@@ -26,7 +27,7 @@ export async function getAllPosts({
   ssg = false,
 }: PostsDTO): Promise<{ data: PostData[]; total: number }> {
   const postsData = fetchAllPostsFromFS();
- 
+
   if (ssg) return { data: postsData, total: postsData.length };
 
   const postsSortedByDate = sortPostsByDate(postsData);
