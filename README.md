@@ -1,6 +1,6 @@
 # Personal Blog
 
-[Link]()
+[Link](yeonhwandev.com)
 
 built with Next, MDX, Tailwind
 
