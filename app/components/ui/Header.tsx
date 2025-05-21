@@ -49,7 +49,7 @@ export default function Header() {
         <ThemeSwitch />
         <Drawer open={isNavOpen} onOpenChange={setNavOpen} direction="right">
           <DrawerTrigger ref={triggerRef}>
-            <HamburgerIcon className="w-mb-icon-size h-mb-icon-size fill-deep-gray dark:fill-text-gray" />
+            <HamburgerIcon className="w-mb-icon-size h-mb-icon-size fill-deep-gray dark:fill-text-gray hover:cursor-pointer" />
           </DrawerTrigger>
           <DrawerContent className="w-screen bg-clean-white dark:bg-dark-black border-none flex flex-col justify-center">
             <div className="hidden">
@@ -58,6 +58,7 @@ export default function Header() {
             <div className="flex flex-col w-full h-fit gap-4 ml-10">
               {ROUTE_LIST.map((route) => (
                 <LinkText
+                  className="text-dt-h2"
                   onClick={() => setNavOpen(false)}
                   key={route}
                   isCurrent={route === pathname}

@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PostProps) {
       type: "article",
       title: data.title,
       description: data.excerpt,
-      url: `https://example.com/posts/${slug}`,
+      url: `${process.env.HOST}/posts/${slug}`,
     },
   };
 }

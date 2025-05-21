@@ -130,6 +130,20 @@ figure[data-rehype-pretty-code-figure=""] {
   }
 }
 
+code::-webkit-scrollbar {
+  background: transparent;
+}
+
+[data-theme="light"] code::-webkit-scrollbar-thumb {
+  background: rgba(52, 52, 52, 0.25);
+  border-radius: 5px;
+}
+
+[data-theme="dark"] code::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 5px;
+}
+
 /* code-line-numbers */
 code[data-line-numbers] {
   counter-reset: line;
@@ -205,4 +219,40 @@ code {
 /* table */
 table {
   width: 100%;
+}
+
+/* details */
+
+details {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+
+  summary {
+    width: max-content;
+    cursor: pointer;
+  }
+
+  a::before {
+    content: "•";
+    margin-right: 0.25rem;
+  }
+
+  a {
+    display: block;
+    width: max-content;
+    padding-left: 1.2rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+[data-theme="light"] details a {
+  color: var(--color-neon-indigo-200);
+}
+
+[data-theme="dark"] details a {
+  color: var(--color-neon-lime);
 }

@@ -29,7 +29,7 @@ type LiProps = HTMLAttributes<HTMLLIElement>;
 export const LI = ({ children, className, ...props }: LiProps) => {
   return (
     <li
-      className={`text-mb-content-p laptop:text-dt-content-p text-deep-gray dark:text-text-white list-none before:w-4 before:h-4 before:pr-2 before:align-middle before:-translate-y-2 before:font-mono before:text-mb-sub ${className}`}
+      className={`text-mb-content-p laptop:text-dt-content-p text-deep-gray dark:text-text-white list-none before:w-4 before:h-4 before:pr-2 before:align-middle before:-translate-y-2 before:font-mono before:text-mb-sub py-1 ${className}`}
       {...props}
     >
       {children}

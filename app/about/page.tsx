@@ -15,12 +15,12 @@ export function generateMetadata() {
       type: "article",
       title: `YH_Blog :: About Me`,
       description: `YH_Blog :: About Me`,
-      url: `https://example.com/about`,
+      url: `${process.env.HOST}/about`,
     },
   };
 }
 
-export default function About() {
+export default async function About() {
   const myProfile = profile;
   const keys = Object.keys(myProfile) as (keyof typeof myProfile)[];
 
@@ -53,7 +53,7 @@ export default function About() {
           priority
           data-name="ascii_image"
           className="my-8 w-3/4 mx-auto block dark:hidden laptop:max-w-[40%]"
-          src="/ascii_blue.png"
+          src="/ascii_blue.webp"
           alt="my_proifle"
           width={2071}
           height={1089}
@@ -62,7 +62,7 @@ export default function About() {
           priority
           data-name="ascii_image"
           className="my-8 w-3/4 mx-auto hidden dark:block laptop:max-w-[40%]"
-          src="/ascii_green.png"
+          src="/ascii_green.webp"
           alt="my_proifle"
           width={2071}
           height={1089}
@@ -80,7 +80,7 @@ export default function About() {
         </ul>
         <div data-name="color-box" className="flex flex-col items-end w-fit mb-10">
           <div className="flex">
-            {palette.slice(0, 8).map((color, idx) => {
+            {palette.slice(0, 8).map((color) => {
               return (
                 <div
                   key={color}
@@ -92,7 +92,7 @@ export default function About() {
           </div>
 
           <div className="flex">
-            {palette.slice(9).map((color, idx) => {
+            {palette.slice(9).map((color) => {
               return (
                 <div
                   key={color}

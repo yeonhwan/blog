@@ -11,7 +11,6 @@ export default function Footer() {
         <span className="inline-flex items-center">© yeonhwan</span>
         <GithubIcon className="w-3 h-3 dark:fill-white fill-deep-gray" />
       </Link>
-      <span className="text-[10px]">update: 2025 04 20</span>
     </footer>
   );
 }

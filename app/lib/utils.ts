@@ -1,5 +1,5 @@
 import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { extendTailwindMerge } from "tailwind-merge";
 import type { PostData } from "root/types";
 
 const POST_PER_PAGE = 5;
@@ -29,10 +29,20 @@ export const sortPostsByDate = (data: PostData[]): PostData[] => {
   });
 };
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-
 export const getDateStringFromDate = (date: Date) => {
   return new Date(date).toLocaleDateString("ko-KR");
 };
+
+// ---
+const twMerge = extendTailwindMerge({
+  extend: {
+    theme: {
+      text: ["dt-h2"],
+      color: ["neon-green-100", "neon-blue-100", "text-gray"],
+    },
+  },
+});
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}

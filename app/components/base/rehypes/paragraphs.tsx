@@ -40,7 +40,7 @@ type ModProps = HTMLAttributes<HTMLModElement>;
 export const StrThrough = ({ children, ...props }: ModProps) => {
   return (
     <del
-      className="text-mb-content-p laptop:text-dt-content-p line-through text-deep-gray dark:text-text-white leading-base-line-height font-sans"
+      className="text-mb-content-p laptop:text-dt-content-p line-through opacity-30 text-deep-gray dark:text-text-white leading-base-line-height font-sans"
       {...props}
     >
       {children}
