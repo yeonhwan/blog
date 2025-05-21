@@ -1,10 +1,10 @@
 # Personal Blog
 
-[Link](yeonhwandev.com)
+[Link](https://www.yeonhwandev.com)
 
 built with Next, MDX, Tailwind
 
-## template
+## Template
 
 `npm create @yeonhwan/next-blog-template`
 
