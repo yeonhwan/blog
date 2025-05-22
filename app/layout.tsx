@@ -5,6 +5,8 @@ import { IBMMono, IBMSans } from "./fonts";
 import Header from "@/components/ui/Header";
 import Footer from "@/components/ui/Footer";
 import { ThemeProvider } from "next-themes";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "YH_Blog",
@@ -18,6 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     <html className={`${IBMMono.variable} ${IBMSans.variable}`} lang="ko" suppressHydrationWarning>
+      <SpeedInsights />
+      <Analytics />
       <body className="antialiased bg-clean-white dark:bg-dark-ash text-deep-gray dark:text-text-white tablet:mx-[12.5%] laptop:mx-[20%] desktop:mx-[25%] min-h-screen  transition-colors duration-75">
         <ThemeProvider>
           <Header />
