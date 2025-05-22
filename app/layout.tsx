@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html className={`${IBMMono.variable} ${IBMSans.variable}`} lang="ko" suppressHydrationWarning>
-      <body className="antialiased bg-clean-white dark:bg-dark-ash text-deep-gray dark:text-text-white tablet:mx-[12.5%] laptop:mx-[20%] desktop:mx-[25%] min-h-screen">
+      <body className="antialiased bg-clean-white dark:bg-dark-ash text-deep-gray dark:text-text-white tablet:mx-[12.5%] laptop:mx-[20%] desktop:mx-[25%] min-h-screen  transition-colors duration-75">
         <ThemeProvider>
           <Header />
 

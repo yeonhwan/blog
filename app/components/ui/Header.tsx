@@ -21,7 +21,7 @@ export default function Header() {
     <header
       inert={isNavOpen ? true : undefined}
       tabIndex={isNavOpen ? -1 : undefined}
-      className="w-full h-mb-header-height tablet:h-tb-header-height flex justify-between sticky top-0 items-center bg-clean-white dark:bg-dark-ash py-mb-y-gutter z-50 px-mb-x-gutter"
+      className="w-full h-mb-header-height tablet:h-tb-header-height flex justify-between sticky top-0 items-center bg-clean-white dark:bg-dark-ash py-mb-y-gutter z-50 px-mb-x-gutter transition-colors duration-75"
     >
       <Link href="/posts" className="flex items-center gap-1">
         <p className="text-mb-h2 laptop:text-dt-h1 text-neon-blue-100 dark:text-neon-green-100 font-mono font-bold">

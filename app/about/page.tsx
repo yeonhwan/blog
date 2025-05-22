@@ -3,7 +3,6 @@ import Image from "next/image";
 import profile from "./profile.json" assert { type: "json" };
 import palette from "./palette";
 import MailIcon from "@/assets/mail.svg";
-import DocumentIcon from "@/assets/document.svg";
 import GithubIcon from "@/assets/github.svg";
 import Link from "next/link";
 
@@ -27,15 +26,18 @@ export default async function About() {
   return (
     <main className="flex flex-col">
       <PageTitle title={"about"} />
-      <section className="flex gap-2 mx-auto items-center my-4">
-        <Link href="https://github.com/yeonhwan">
-          <GithubIcon className="w-5 h-5 tablet:w-6 tablet:h-6 laptop:w-7 laptop:h-7" />
+      <section className="flex justify-end items-center my-1">
+        <Link
+          className="w-[5%] h-[5%] mr-[1%] tablet:w-[4%] tablet:h-[4%] laptop:w-[2.5%] laptop:h-[2.5%] min-w-5 min-h-5"
+          href="https://github.com/yeonhwan"
+        >
+          <GithubIcon />
         </Link>
-        <Link href="mailto:yeonhwan619@gmail.com">
-          <MailIcon className="w-5 h-5 tablet:w-6 tablet:h-6 laptop:w-7 laptop:h-7" />
-        </Link>
-        <Link href="/yeonhwan_resume.pdf" download>
-          <DocumentIcon className="w-5 h-5 tablet:w-6 tablet:h-6 laptop:w-7 laptop:h-7" />
+        <Link
+          className="w-[5%] h-[5%] mr-[1%] tablet:w-[4%] tablet:h-[4%] laptop:w-[2.5%] laptop:h-[2.5%] min-w-5 min-h-5"
+          href="mailto:yeonhwandev@gmail.com"
+        >
+          <MailIcon />
         </Link>
       </section>
       <section className="flex bg-text-white dark:bg-dark-green w-full rounded-sm flex-col px-4">
@@ -69,7 +71,7 @@ export default async function About() {
         />
         <ul data-name="content" className="w-fit font-mono flex flex-col gap-2 my-4">
           <li className="w-fit text-neon-blue-100 dark:text-neon-green-200 text-sm laptop:text-base font-semibold border-b border-sub-gray border-dashed pb-1">
-            yeonhwan-park@seoul
+            yeonhwan@korea
           </li>
           {keys.map((key) => (
             <li key={key} className="flex text-xs laptop:text-base">
