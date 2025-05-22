@@ -24,8 +24,10 @@ export default function LinkText({
     },
   });
 
+  const href = title === "posts" ? "/" : `/${title}`;
+
   return (
-    <Link onClick={onClick} href={`/${title}`} className={cn(linkStyle({ isCurrent }), className)}>
+    <Link onClick={onClick} href={href} className={cn(linkStyle({ isCurrent }), className)}>
       {title}
     </Link>
   );
