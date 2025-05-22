@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 
 export const IBMMono = localFont({
   preload: true,
+  display: "swap",
   src: [
     {
       path: "./assets/fonts/mono/mono_bol.woff2",
@@ -29,6 +30,7 @@ export const IBMMono = localFont({
 
 export const IBMSans = localFont({
   preload: true,
+  display: "swap",
   src: [
     {
       path: "./assets/fonts/sans/sans_bol.woff2",
