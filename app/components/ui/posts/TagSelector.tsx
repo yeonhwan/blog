@@ -70,7 +70,7 @@ export default function TagSelector({
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
                     setOpen(false);
-                    router.push(`/posts?tag=${currentValue}`);
+                    router.push(`/?tag=${currentValue}`);
                   }}
                 >
                   {tag.label}

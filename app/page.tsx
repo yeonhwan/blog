@@ -22,10 +22,10 @@ export async function generateMetadata({ searchParams }: PostsProps) {
         type: "article",
         title: `YH_Blog :: Posts`,
         description: `All Posts`,
-        url: `${process.env.HOST}/posts?page=${page}`,
+        url: `${process.env.HOST}?page=${page}`,
       },
       alternates: {
-        canonical: `${process.env.HOST}/posts/page=${page}`,
+        canonical: `${process.env.HOST}/page=${page}`,
       },
     };
   }
@@ -37,10 +37,10 @@ export async function generateMetadata({ searchParams }: PostsProps) {
       type: "article",
       title: `YH_Blog :: ${tag} Posts`,
       description: `YH_Blog :: All Posts about ${tag}`,
-      url: `${process.env.HOST}/posts?tag=${tag}&page=${page}`,
+      url: `${process.env.HOST}?tag=${tag}&page=${page}`,
     },
     alternates: {
-      canonical: `${process.env.HOST}/posts/tag=${tag}/page=${page}`,
+      canonical: `${process.env.HOST}/tag=${tag}/page=${page}`,
     },
   };
 }
