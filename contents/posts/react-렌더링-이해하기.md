@@ -130,7 +130,7 @@ function MyComponent() {
 
 결과를 살펴보면 이전에 `createElement` 를 통해 전달했던 값들을 통해 일종의 `DOM` 과 비슷한 Object 트리를 형성하는 것을 확인할 수 있다.
 
-즉, `HTML -> DOM` 과정을 통해 Javascript 로 사용할 준비를 마치듯이, `JSX -> React Element Tree` 를 통해 React 가 동작할 재료를 마련하는 것이라고 볼 수 있다.
+즉, `HTML -> DOM` 과정을 통해 Javascript 로 사용할 준비를 마치듯이 `JSX -> React Element Tree` 를 통해 React 가 동작할 재료를 마련하는 것이라고 볼 수 있다.
 
 ### VDOM
 
