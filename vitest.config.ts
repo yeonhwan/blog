@@ -10,10 +10,11 @@ export default defineConfig({
       root: new URL("./", import.meta.url).pathname,
     },
     coverage: {
+      enabled: true,
       reporter: ["text", "json", "html"],
       all: true,
-      include: ["app/**/*.{ts,tsx}"],
-      exclude: ["**/__tests__/**/*.test.ts", "node_modules"],
+      include: ["blog-cli/**/*.{ts,tsx}"],
+      exclude: ["**/__tests__/**/*.test.ts", "node_modules", "app", "contents"],
     },
   },
 });

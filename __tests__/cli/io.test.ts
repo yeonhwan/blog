@@ -100,7 +100,8 @@ describe("readFromFile", () => {
   });
 
   test("throws if path is empty", () => {
-    expect(() => readFromFile("no.txt")).toThrow(`File not found: no.txt`);
+    const cwd = process.cwd() 
+    expect(() => readFromFile("no.txt")).toThrow(`File not found: ${cwd}/no.txt`);
   });
 
   test("return null when error suprresed", () => {

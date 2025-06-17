@@ -19,8 +19,8 @@ const expectPostMetaToMatch = (actual: PostMeta, expected: PostMeta) => {
   });
 };
 
-vi.mock("../../../lib/utils", async (importOriginal) => {
-  const original = await importOriginal<typeof import("../../../lib/utils")>();
+vi.mock("../../../blog-cli/lib/io", async (importOriginal) => {
+  const original = await importOriginal<typeof import("../../../blog-cli/lib/io")>();
   return {
     ...original,
     getContentPath: vi.fn(() => {
