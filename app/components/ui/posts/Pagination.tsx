@@ -30,7 +30,7 @@ export default function Pagination({ total, current }: { total: number; current:
         <Link
           key={"page" + page}
           className={pageStyle({ current: page === current })}
-          href={`/posts?page=${page}`}
+          href={`/?page=${page}`}
         >
           {page}
         </Link>
@@ -63,7 +63,7 @@ const PageJumpButon = ({
   });
 
   return (
-    <Link href={`/posts?page=${to}`}>
+    <Link href={`/?page=${to}`}>
       <ArrowDoublIcon className={arrowIconStyle({ isPrev, disable })} />
     </Link>
   );
